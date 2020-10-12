@@ -1,0 +1,64 @@
+<!--模态框-->
+<div id="editOrder" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">order Edit</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <ul class=" page-content">
+                    <li><label class="label_name">订单编号：</label>
+                        <span class="add_name">
+                            <input readonly id="orderEditId" value="" name="订单编号" type="text" class="text_add"/>
+                         </span>
+                    </li>
+
+                    <li>
+                        <label class="label_name">产品名字：</label><span class="add_name">
+                                 <input id="productEditName" readonly="" name="产品名字" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                    <li>
+                        <label class="label_name">发货快递：</label><span class="add_name">
+                            <input id="orderEditExpressDeliveryCompany" name="发货快递" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                    <li>
+                        <label class="label_name">收货地址：</label>
+                        <span class="add_name">
+                           <textarea  id="orderEditAddress" rows="4" cols="22">
+
+                            </textarea>
+                        </span>
+
+                    </li>
+
+                    <li>
+                        <label class="label_name">收 货 人：</label><span class="add_name">
+                            <input id="orderEditConsignee" name="收货人" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li>
+                        <label class="label_name">收货人电话：</label><span class="add_name">
+                            <input id="orderEditPhone" name="收货人电话" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="editOrderInfoBtn" type="button" class="btn btn-primary" data-dismiss="modal">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

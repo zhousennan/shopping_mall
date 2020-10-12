@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link href="/assets/css/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="/font/css/font-awesome.min.css" />
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <script src="/assets/js/ace-extra.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+    <script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!-- <![endif]-->
+    <script src="/assets/dist/echarts.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <title>交易</title>
+</head>
+
+<body>
+<div class=" page-content clearfix">
+    <div class="transaction_style">
+        <ul class="state-overview clearfix">
+            <li class="Info">
+                <span class="symbol red"><i class="fa fa-jpy"></i></span>
+                <span class="value"><h4>交易金额</h4><p id="allMoney"  class="Quantity color_red"></p></span>
+            </li>
+            <li class="Info">
+                <span class="symbol  blue"><i class="fa fa-shopping-cart"></i></span>
+                <span  class="value"><h4>订单数量</h4><p id="infoTotal" class="Quantity color_red"></p></span>
+            </li>
+            <li class="Info">
+                <span class="symbol terques"><i class="fa fa-shopping-cart"></i></span>
+                <span class="value"><h4>交易成功</h4><p id="success" class="Quantity color_red"></p></span>
+            </li>
+            <li class="Info">
+                <span class="symbol yellow"><i class="fa fa-shopping-cart"></i></span>
+                <span class="value"><h4>交易失败</h4><p id="fail" class="Quantity color_red"></p></span>
+            </li>
+            <li class="Info">
+                <span class="symbol darkblue"><i class="fa fa-jpy"></i></span>
+                <span class="value"><h4>退款金额</h4><p id="refund"  class="Quantity color_red"></p></span>
+            </li>
+        </ul>
+
+    </div>
+    <div class="t_Record">
+        <div id="main" style="height:400px; overflow:hidden; width:100%; overflow:auto" ></div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(".t_Record").width($(window).width()-60);
+        //当文档窗口发生改变时 触发
+        $(window).resize(function(){
+            $(".t_Record").width($(window).width()-60);
+        });
+
+
+
+    });
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/api/infoTotal",
+            type: "post",
+            contentType: "application/json",
+            success:function (data){
+                //console.log(data);
+
+                $("#allMoney").html(data[0]),
+                    $("#infoTotal").html(data[1]);
+                $("#success").html(data[2]);
+                $("#fail").html(data[3]);
+                $("#refund").html(data[4]);
+            }
+
+        })
+    });
+
+    require.config({
+        paths: {
+            echarts: '/assets/dist'
+        }
+    });
+    require(
+        [
+            'echarts',
+            'echarts/theme/macarons',
+            'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+            'echarts/chart/bar'
+        ],
+        function (ec,theme) {
+            $.ajax({
+                url: "/api/transationDate",
+                type: "post",
+                contentType: "application/json",
+                success:function (data){
+                    var myChart = ec.init(document.getElementById('main'),theme);
+                    option = {
+                        title: {
+                            text: '订单统计'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['总订单量','已支付订单','未支付订单']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data:data[0]
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                name: '总订单量',
+                                type: 'line',
+                                stack: '总量',
+                                data: data[1]
+                            },
+                            {
+                                name: '已支付订单',
+                                type: 'line',
+                                stack: '总量',
+                                data: data[2]
+                            },
+                            {
+                                name: '未支付',
+                                type: 'line',
+                                stack: '总量',
+                                data: data[3]
+                            }
+                        ]
+                    };
+
+
+                    myChart.setOption(option);
+                }
+            })
+
+        }
+    );
+
+
+
+
+</script>

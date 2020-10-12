@@ -1,0 +1,54 @@
+<!--模态框-->
+<div id="courierNumberEdit" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">发货页面</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <input id="initDeliverGoodsId" hidden>
+                <li>
+                    <label class="label_name">发货快递：</label><span class="add_name">
+                            <input readonly id="courierNumberEditExpressDeliveryCompany" name="发货快递" type="text"
+                                   class="text_add"/></span>
+                    <div class="prompt r_f"></div>
+                </li>
+
+                <li>
+                    <label class="label_name">收货地址：</label>
+                    <span class="add_name">
+                           <textarea readonly id="courierNumberrEditAddress" rows="4" cols="22">
+                           </textarea>
+                        </span>
+                </li>
+
+                <li>
+                    <label class="label_name">收 货 人：</label><span class="add_name">
+                            <input readonly id="courierNumberEditConsignee" name="收货人" type="text" class="text_add"/></span>
+                    <div class="prompt r_f"></div>
+                </li>
+                <li>
+                    <label class="label_name">收货人电话：</label><span class="add_name">
+                            <input readonly id="courierNumberEditPhone" name="收货人电话" type="text" class="text_add"/></span>
+                    <div class="prompt r_f"></div>
+                </li>
+                <li>
+                    <label class="label_name">快递单号：</label><span class="add_name">
+                            <input id="courierNumber" name="快递单号" type="text" class="text_add"/></span>
+                    <div class="prompt r_f"></div>
+                </li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button id="courierNumberBtn" type="button" class="btn btn-primary" data-dismiss="modal">确认发货
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

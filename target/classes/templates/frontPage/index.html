@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/frontStatic/css/iconfont.css">
+    <link rel="stylesheet" href="/frontStatic/css/global.css">
+    <link rel="stylesheet" href="/frontStatic/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/swiper.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/styles.css">
+    <script src="/frontStatic/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/bootstrap.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/swiper.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/global.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
+    <title>U袋网</title>
+</head>
+<body>
+<!-- 顶部tab -->
+<div th:replace="/frontPage/fragments/head"></div>
+
+
+
+
+<!-- 首页楼层导航 -->
+<nav class="floor-nav visible-lg-block">
+    <span class="scroll-nav active">爆款推荐</span>
+    <span class="scroll-nav">女装</span>
+    <span class="scroll-nav">男装</span>
+    <span class="scroll-nav">活力童装</span>
+</nav>
+<!-- 楼层内容 -->
+<div class="content inner" style="margin-bottom: 40px;">
+    <section class="scroll-floor floor-1 clearfix">
+        <div class="pull-left">
+            <div class="floor-title">
+                <i class="iconfont icon-tuijian fz16"></i> 爆款推荐
+                <a href="" class="more"><i class="iconfont icon-more"></i></a>
+            </div>
+            <div class="con-box">
+                <a class="left-img hot-img" href="">
+                    <img src="/frontStatic/images/floor_1.jpg" alt="" class="cover">
+                </a>
+                <div class="right-box hot-box" id="hotProduct">
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="floor-title">
+                <i class="iconfont icon-horn fz16"></i> 平台公告
+                <a href="udai_notice.html" class="more"><i class="iconfont icon-more"></i></a>
+            </div>
+            <div class="con-box">
+                <div class="notice-box bgf5">
+                    <div class="swiper-container">
+
+                        <div class="swiper-wrapper">
+                            <a class="swiper-slide ep" href="udai_notice.html">【公告】U袋网平台已上线，您还在等什么呢？是吧~</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--右边div定位-->
+                <div class="buts-box bgf5">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="scroll-floor floor-2">
+        <div class="floor-title">
+            <i class="iconfont icon-skirt fz16"></i> 女装
+        </div>
+        <div class="con-box" >
+            <a class="left-img hot-img" href="">
+                <img src="/frontStatic/images/floor_2.jpg" alt="" class="cover">
+            </a>
+            <div class="right-box" id="woman">
+
+
+            </div>
+
+        </div>
+    </section>
+    <section class="scroll-floor floor-3">
+        <div class="floor-title">
+            <i class="iconfont icon-fushi fz16"></i> 男装
+        </div>
+        <div class="con-box">
+            <a class="left-img hot-img" href="">
+                <img src="/frontStatic/images/floor_3.jpg" alt="" class="cover">
+            </a>
+            <div class="right-box" id="man">
+
+
+            </div>
+        </div>
+    </section>
+    <section class="scroll-floor floor-4">
+        <div class="floor-title">
+            <i class="iconfont icon-kid fz16"></i> 活力童装
+        </div>
+        <div class="con-box">
+            <a class="left-img hot-img" href="">
+                <img src="/frontStatic/images/floor_4.jpg" alt="" class="cover">
+            </a>
+            <div class="right-box" id="child">
+
+            </div>
+        </div>
+    </section>
+
+</div>
+<script>
+    $(document).ready(function(){
+        unload ();
+        womanList();
+        manProductList();
+        childProductList();
+    });
+    // $(document).ready(function() {
+    //     initOrderTable(DEFAULT_PAGE_SIZE);
+    // });
+    function unload (){
+        $.ajax({
+            url: "/api/hotProduct",
+            type: "get",
+            success: function (data){
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += "<a href=\"/front/toItem/"+data[i].productId+"\" class=\"floor-item\">\n" +
+                        "<div class=\"item-img hot-img\">\n" +
+                        "<img src=\""+data[i].productMainimage+"\" alt=\""+data[i].productTitle+"\" class=\"cover\">\n" +
+                        "</div>\n" +
+                        "<div class=\"price clearfix\">\n" +
+                        "<span class=\"pull-left cr fz16\">"+data[i].productPrice+"</span>\n" +
+                        "<span class=\"pull-right c6\">购买价</span>\n" +
+                        "</div>\n" +
+                        "<div class=\"name ep\" title=\""+data[i].productTitle+"\">"+data[i].productTitle+"</div>\n" +
+                        "</a>"
+                }
+                $("#hotProduct").append(html);
+            }
+        })
+    }
+
+    function womanList(){
+        $.ajax({
+            url: "/api/womanProductList",
+            type: "get",
+            success: function (data){
+                var  html="";
+                for (var i = 0; i <data.length ; i++) {
+                        html += "<a href=\"/front/toItem/"+data[i].productId+"\" class=\"floor-item\">\n" +
+                            "<div class=\"item-img hot-img\">\n" +
+                            "<img src=\""+data[i].productMainimage+"\" alt=\""+data[i].productTitle +"\" class=\"cover\">\n" +
+                            "</div>\n" +
+                            "<div class=\"price clearfix\">\n" +
+                            "<span class=\"pull-left cr fz16\">"+data[i].productPrice +"</span>\n" +
+                            "<span class=\"pull-right c6\">购买价</span>\n" +
+                            "</div>\n" +
+                            "<div class=\"name ep\" title=\""+data[i].productTitle +"\">"+data[i].productTitle +"</div>\n" +
+                            "</a>"
+                }
+                $("#woman").append(html);
+            }
+        })
+    }
+    function manProductList(){
+        $.ajax({
+            url: "/api/manProductList",
+            type: "get",
+            success: function (data){
+                var  html="";
+                for (var i = 0; i <data.length ; i++) {
+                    html += "<a href=\"/front/toItem/"+data[i].productId+"\" class=\"floor-item\">\n" +
+                        "<div class=\"item-img hot-img\">\n" +
+                        "<img src=\""+data[i].productMainimage+"\" alt=\""+data[i].productTitle +"\" class=\"cover\">\n" +
+                        "</div>\n" +
+                        "<div class=\"price clearfix\">\n" +
+                        "<span class=\"pull-left cr fz16\">"+data[i].productPrice +"</span>\n" +
+                        "<span class=\"pull-right c6\">购买价</span>\n" +
+                        "</div>\n" +
+                        "<div class=\"name ep\" title=\""+data[i].productTitle +"\">"+data[i].productTitle +"</div>\n" +
+                        "</a>"
+                }
+                $("#man").append(html);
+            }
+        })
+    }
+    function childProductList(){
+        $.ajax({
+            url: "/api/childProductList",
+            type: "get",
+            success: function (data){
+                var  html="";
+                for (var i = 0; i <data.length ; i++) {
+                    html += "<a href=\"/front/toItem/"+data[i].productId+"\" class=\"floor-item\">\n" +
+                        "<div class=\"item-img hot-img\">\n" +
+                        "<img src=\""+data[i].productMainimage+"\" alt=\""+data[i].productTitle +"\" class=\"cover\">\n" +
+                        "</div>\n" +
+                        "<div class=\"price clearfix\">\n" +
+                        "<span class=\"pull-left cr fz16\">"+data[i].productPrice +"</span>\n" +
+                        "<span class=\"pull-right c6\">购买价</span>\n" +
+                        "</div>\n" +
+                        "<div class=\"name ep\" title=\""+data[i].productTitle +"\">"+data[i].productTitle +"</div>\n" +
+                        "</a>"
+                }
+                $("#child").append(html);
+            }
+        })
+    }
+
+    $(document).ready(function(){
+        // 顶部banner轮播
+        var banner_swiper = new Swiper('.banner-box', {
+            autoplayDisableOnInteraction : false,
+            pagination: '.banner-box .swiper-pagination',
+            paginationClickable: true,
+            autoplay : 5000,
+        });
+        // 新闻列表滚动
+        var notice_swiper = new Swiper('.notice-box .swiper-container', {
+            paginationClickable: true,
+            mousewheelControl : true,
+            direction : 'vertical',
+            slidesPerView : 10,
+            autoplay : 2e3,
+        });
+        // 楼层导航自动 active
+        $.scrollFloor();
+        // 页面下拉固定楼层导航
+        $('.floor-nav').smartFloat();
+        $('.to-top').toTop({position:false});
+    });
+</script>
+<!--右侧信息-->
+<div th:replace="/frontPage/fragments/right"></div>
+<!-- 底部信息 -->
+<div th:replace="/frontPage/fragments/footer"></div>
+</body>
+</html>

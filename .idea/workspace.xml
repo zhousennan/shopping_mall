@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6172abd9-7c03-4c24-8a6a-241fcc7a48da" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="shopping: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="shopping_mall" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="G:/Program File/Apache/maven/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="G:\Program File\Apache\maven\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+  </component>
+  <component name="ProjectId" id="1gXhjmcRhV4W4xsHKKSojkxSezA" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="flattenModules" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/frontStatic" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2045977" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.zsn" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\static\frontStatic" />
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\static\css" />
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\static\mystyle" />
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\static\plugin" />
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\static\assets\js" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zsn.utils" />
+      <recent name="com.zsn.config" />
+      <recent name="com.zsn.modules.account.service.impl" />
+      <recent name="com.zsn.modules.account.service" />
+      <recent name="com.zsn.modules.account.entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\NewIdelWorkface\shopping_mall\src\main\resources\templates\account\user" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ShoppingMallApplication">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zsn.Demo" />
+      <module name="shopping_mall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zsn.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zsn.Main" />
+      <module name="shopping_mall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zsn.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Person" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zsn.Person" />
+      <module name="shopping_mall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zsn.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zsn.test" />
+      <module name="shopping_mall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zsn.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShoppingMallApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shopping_mall" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zsn.ShoppingMallApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.Person" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Demo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6172abd9-7c03-4c24-8a6a-241fcc7a48da" name="Default Changelist" comment="" />
+      <created>1598266981322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598266981322</updated>
+      <workItem from="1598266985873" duration="1370000" />
+      <workItem from="1598316736606" duration="2648000" />
+      <workItem from="1598955782090" duration="236000" />
+      <workItem from="1598956095412" duration="7651000" />
+      <workItem from="1599056497650" duration="1696000" />
+      <workItem from="1599204841904" duration="14068000" />
+      <workItem from="1599270857523" duration="17710000" />
+      <workItem from="1599371777317" duration="2879000" />
+      <workItem from="1599550228067" duration="2134000" />
+      <workItem from="1599553429992" duration="1664000" />
+      <workItem from="1599613131308" duration="92000" />
+      <workItem from="1599613267157" duration="16522000" />
+      <workItem from="1599698964886" duration="22257000" />
+      <workItem from="1599738083911" duration="3180000" />
+      <workItem from="1599785307850" duration="25530000" />
+      <workItem from="1599963531263" duration="19851000" />
+      <workItem from="1600044470524" duration="18314000" />
+      <workItem from="1600069324908" duration="7507000" />
+      <workItem from="1600130695480" duration="31352000" />
+      <workItem from="1600217174041" duration="22942000" />
+      <workItem from="1600303781488" duration="18154000" />
+      <workItem from="1600390144929" duration="23644000" />
+      <workItem from="1600477182930" duration="17759000" />
+      <workItem from="1600696452923" duration="5159000" />
+      <workItem from="1600736194794" duration="20522000" />
+      <workItem from="1600822395535" duration="23065000" />
+      <workItem from="1600907464574" duration="6947000" />
+      <workItem from="1601114985658" duration="1493000" />
+      <workItem from="1601641127430" duration="793000" />
+      <workItem from="1602509948710" duration="502000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="365" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599215010832">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="365" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599215010832" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1600842787459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600842787459" />
+    <state x="503" y="197" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1600762686313">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="503" y="197" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1600762686313" />
+    <state x="667" y="479" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1598956633221">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="667" y="479" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1598956633221" />
+    <state x="536" y="279" width="464" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1599217660398">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="536" y="279" width="464" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1599217660398" />
+    <state x="839" y="448" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1598329280824">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="839" y="448" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1598329280824" />
+    <state x="451" y="95" key="FileChooserDialogImpl" timestamp="1601115265597">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="451" y="95" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601115265597" />
+    <state x="581" y="310" key="Github.CreateGistDialog" timestamp="1600140232755">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="581" y="310" key="Github.CreateGistDialog/0.0.1536.824@0.0.1536.824" timestamp="1600140232755" />
+    <state width="1493" height="232" key="GridCell.Tab.0.bottom" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.0.center" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.0.left" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.0.right" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.1.bottom" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.1.center" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.1.left" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.1.right" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.2.bottom" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.2.center" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.2.left" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state width="1493" height="232" key="GridCell.Tab.2.right" timestamp="1601690898791">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1601690898791" />
+    <state x="276" y="61" key="SettingsEditor" timestamp="1599613238679">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="276" y="61" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599613238679" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1599208942727">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1599208942727" />
+    <state x="600" y="272" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1599706608425">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="600" y="272" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.824@0.0.1536.824" timestamp="1599706608425" />
+    <state x="478" y="1" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1599214859675">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="1" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1599214859675" />
+    <state x="229" y="151" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1599718215812">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="229" y="151" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1599718215812" />
+    <state x="178" y="120" key="new project wizard" timestamp="1601115285585">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="120" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1601115285585" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1600824684278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600824684278" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600483670208">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600483670208" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/zsn/modules/account/dao/OrderInfoDao.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/zsn/modules/account/controller/productController.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/frontPage/fragments/head.html</url>
+          <line>120</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/shopping_mall$test.ic" NAME="test Coverage Results" MODIFIED="1599708676726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.zsn.*</FILTER>
+    </SUITE>
+  </component>
+</project>

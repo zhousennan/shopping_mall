@@ -1,0 +1,35 @@
+{
+  "name" : "UserRole",
+  "originTableName" : "user_role",
+  "comment" : null,
+  "fullColumn" : [ {
+    "name" : "userRoleId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "ktShortType" : "Int",
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "userId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "ktShortType" : "Int",
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "roleId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "ktShortType" : "Int",
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.zsn.modules.account",
+  "savePath" : "./src/main/java/com/zsn/modules/account",
+  "saveModelName" : "shopping_mall"
+}

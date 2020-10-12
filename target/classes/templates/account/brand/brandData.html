@@ -1,0 +1,111 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/mystyle/css/shop.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/mystyle/css/Sellerber.css" type="text/css" rel="stylesheet"/>
+    <link href="/mystyle/css/bkg_ui.css" type="text/css" rel="stylesheet"/>
+    <link href="/mystyle/font/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <script src="/mystyle/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/mystyle/js/jquery.cookie.js"></script>
+    <script src="/mystyle/js/shopFrame.js" type="text/javascript"></script>
+    <script src="/mystyle/js/Sellerber.js" type="text/javascript"></script>
+    <script src="/mystyle/js/layer/layer.js" type="text/javascript"></script>
+    <script src="/mystyle/js/jquery.dataTables.min.js"></script>
+    <script src="/mystyle/js/jquery.dataTables.bootstrap.js"></script>
+    <script src="/js/echarts.min.js"></script>
+</head>
+<body>
+<div style="width: 1200px;height:400px ">
+<div id="main" style="width: 600px;height:400px;"></div>
+<div id="PieChart" style="width: 600px;height:400px;"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+                $.ajax({
+                    url: "/api/brandDate",
+                    type: "post",
+                    contentType: "application/json",
+                    success:function (data) {
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('main'));
+                        option = {
+                            xAxis: {
+                                type: 'category',
+                                data: data[0]
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+                            series: [{
+                                data: data[1],
+                                type: 'bar',
+                                showBackground: true,
+                                backgroundStyle: {
+                                    color: 'rgba(220, 220, 220, 0.8)'
+                                }
+                            }]
+                        };
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+
+                    },
+                })
+
+                $.ajax({
+                    url: "/api/brandPieChart",
+                    type: "post",
+                    contentType: "application/json",
+                    success:function (data) {
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('PieChart'));
+                        option = {
+                            title: {
+                                text: '某站点用户访问来源',
+                                subtext: '纯属虚构',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                data: data[0]
+                            },
+                            series: [
+                                {
+                                    name: '产品数量',
+                                    type: 'pie',
+                                    radius: '55%',
+                                    center: ['50%', '60%'],
+                                    data:data[1],
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }
+                            ]
+                        };
+
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+
+                    },
+                })
+
+
+
+
+</script>
+</html>

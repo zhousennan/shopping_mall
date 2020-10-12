@@ -1,0 +1,64 @@
+<!--模态框-->
+<div id="editAdmin" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">新增管理员</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <ul class=" page-content">
+                    <li><label class="label_name">用户 名：</label>
+                        <span class="add_name">
+                            <input  id="adminName" value="" name="用户名" type="text" class="text_add"/>
+                         </span>
+                    </li>
+
+                    <li>
+                        <label class="label_name">真实姓名：</label><span class="add_name">
+                                 <input id="adminRealName"  name="真实姓名" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                    <li>
+                        <label class="label_name">手机 号 ：</label><span class="add_name">
+                            <input id="adminPhone" name="手机号" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                    <li>
+                        <label class="label_name">邮箱地址 ：</label><span class="add_name">
+                            <input id="adminEmail" name="邮箱地址" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+
+                    <li>
+                        <label class="label_name">密  码：</label><span class="add_name">
+                            <input id="adminpwd" name="密码" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">角色
+
+
+                        </label>
+                        <div class="col-md-8" id="rolesForEditPage" name="roles"></div>
+                    </div>
+
+
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button id="addAdminBtn" type="button" class="btn btn-primary" data-dismiss="modal">确定新增
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<!--添加用户图层-->
+<div id="show_userInfo" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <ul class=" page-content">
+                    <li><label class="label_name">用&nbsp;&nbsp;户 &nbsp;名：</label><span class="add_name">
+            <input readonly
+                    id="userNameForUserInfo" value="" name="用户名" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li><label class="label_name">用户昵称：</label><span class="add_name">
+            <input readonly id="userNickNameForUserInfo" name="用户昵称" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li><label class="label_name">真实姓名：</label><span class="add_name">
+            <input readonly id="userRealNameForUserInfo" name="真实姓名" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                        <span class="add_name">
+                        <input name="man" id="man" type="radio">男</input>
+                            <input name="man" id="woman" type="radio">女</input>
+                        </span>
+
+                    </li>
+                    <li><label class="label_name">移动电话：</label><span class="add_name">
+            <input readonly id="userPhoneForUserInfo" name="移动电话" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li><label class="label_name">电子邮箱：</label><span class="add_name">
+            <input readonly id="userEmailForUserInfo" name="电子邮箱" type="text" class="text_add"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li class="adderss"><label class="label_name">家庭住址：</label><span class="add_name">
+            <input readonly id="userAddressForUserInfo" name="家庭住址" type="text" class="text_add" style=" width:350px"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li class="adderss"><label class="label_name">加入时间：</label><span class="add_name">
+            <input readonly id="userDateForUserInfo" name="出生日期" type="text" class="text_add" style=" width:350px"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+                    <li class="adderss"><label class="label_name">用户等级：</label><span class="add_name">
+            <input readonly id="userGradeForUserInfo" name="用户等级" type="text" class="text_add" style=" width:350px"/></span>
+                        <div class="prompt r_f"></div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

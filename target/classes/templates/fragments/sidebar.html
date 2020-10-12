@@ -1,0 +1,94 @@
+<div class="sidebar" id="sidebar">
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <a class="btn btn-success">
+                <i class="icon-signal"></i>
+            </a>
+
+            <a class="btn btn-info">
+                <i class="icon-pencil"></i>
+            </a>
+
+            <a class="btn btn-warning">
+                <i class="icon-group"></i>
+            </a>
+
+            <a class="btn btn-danger">
+                <i class="icon-cogs"></i>
+            </a>
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+        </div>
+    </div>
+
+
+
+    <!-- #sidebar-shortcuts -->
+    <div id="menu_style" class="menu_style">
+        <ul class="nav nav-list" id="nav_list">
+            <li class="home"><a href="javascript:void(0)" name="/account/index_home" class="iframeurl" title=""><i class="icon-home"></i><span class="menu-text"> 系统首页 </span></a></li>
+            <li><a href="#" class="dropdown-toggle"><i class="icon-desktop"></i><span class="menu-text"> 产品管理 </span><b class="arrow icon-angle-down"></b></a>
+                <ul class="submenu">
+                    <li class="home"><a  href="javascript:void(0)" name="/account/products"  title="产品类表" class="iframeurl"><i class="icon-double-angle-right"></i>产品类表</a></li>
+                    <li class="home"><a  href="javascript:void(0)" name="/account/brandList" title="品牌管理"  class="iframeurl"><i class="icon-double-angle-right"></i>品牌管理</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="/account/brandData" title="品牌数据"  class="iframeurl"><i class="icon-double-angle-right"></i>品牌数据</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="dropdown-toggle"><i class="icon-list"></i><span class="menu-text"> 交易管理 </span><b class="arrow icon-angle-down"></b></a>
+                <ul class="submenu">
+                    <li class="home"><a href="javascript:void(0)" name="/account/orderList" title="订单管理"  class="iframeurl"><i class="icon-double-angle-right"></i>交易信息</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="/account/transation" title="订单统计"  class="iframeurl"><i class="icon-double-angle-right"></i>订单管理</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="dropdown-toggle"><i class="icon-user"></i><span class="menu-text"> 用户管理 </span><b class="arrow icon-angle-down"></b></a>
+                <ul class="submenu">
+                    <li class="home"><a href="javascript:void(0)" name="/account/users" title="用户列表"  class="iframeurl"><i class="icon-double-angle-right"></i>用户列表</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="/account/userGrading" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>
+
+                </ul>
+            </li>
+
+
+
+
+            <li><a href="#" class="dropdown-toggle"><i class="icon-group"></i><span class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
+                <ul class="submenu">
+
+                    <li class="home"><a href="javascript:void(0)" name="/account/roles" title="角色列表"  class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="/account/Admins" title="管理员列表" class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $("#menu_style").niceScroll({
+            cursorcolor:"#888888",
+            cursoropacitymax:1,
+            touchbehavior:false,
+            cursorwidth:"5px",
+            cursorborder:"0",
+            cursorborderradius:"5px"
+        });
+    </script>
+    <div class="sidebar-collapse" id="sidebar-collapse">
+        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    </div>
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+</div>
