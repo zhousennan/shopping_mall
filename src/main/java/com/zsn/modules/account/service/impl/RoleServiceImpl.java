@@ -29,13 +29,13 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public PageInfo<Role> getRoleList(SearchVo searchVo) {
 
-        PageHelper.startPage(searchVo.getCurrentPage(),searchVo.getPageSize());
+        PageHelper.startPage(searchVo.getCurrentPage(), searchVo.getPageSize());
         return new PageInfo<>(Optional.ofNullable(roleDao.getRoleList()).orElse(Collections.emptyList()));
     }
 
     @Override
     public PageInfo<UserInfo> getAdminList(SearchVo searchVo) {
-        PageHelper.startPage(searchVo.getCurrentPage(),searchVo.getPageSize());
+        PageHelper.startPage(searchVo.getCurrentPage(), searchVo.getPageSize());
         return new PageInfo<>(Optional.ofNullable(roleDao.getAdminList()).orElse(Collections.emptyList()));
     }
 
@@ -43,27 +43,27 @@ public class RoleServiceImpl implements RoleService {
     public Result<UserInfo> insertAdmin(UserInfo userInfo) {
 
         UserInfo userByUserName = userInfoDao.getUserByUserName(userInfo.getUserName());
-        if (userByUserName!=null){
-            return new Result<>(Result.ResultStatus.FAILD.status,"用户名已经存在");
+        if (userByUserName != null) {
+            return new Result<>(Result.ResultStatus.FAILD.status, "用户名已经存在");
         }
 
-        String pwd= userInfo.getPassword();
+        String pwd = userInfo.getPassword();
         String md5 = MD5Util.getMD5(pwd);
         userInfo.setPassword(md5);
-        SimpleDateFormat sdf =   new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
+        SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
         userInfo.setBirthday(sdf.format(new Date()));
         roleDao.insertAdmin(userInfo);
         List<Role> roleList = userInfo.getRoleList();
 
-        UserInfo user= userInfoDao.getUserByUserName(userInfo.getUserName());
+        UserInfo user = userInfoDao.getUserByUserName(userInfo.getUserName());
 
-       int userId= (Integer) user.getUserId();
+        int userId = (Integer) user.getUserId();
 
         for (Role role : roleList) {
-            roleDao.insertRoleUser(userId,role.getRoleId());
+            roleDao.insertRoleUser(userId, role.getRoleId());
         }
 
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"新增管理员成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增管理员成功");
     }
 
     @Override

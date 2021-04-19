@@ -47,7 +47,8 @@ public interface BrandDao {
     List<Brand> getBrandProductCount();
 
     @Select("select product_brand as brandName , count(*) as count from product group by product_brand")
-    List<Brand>  getBrandPieChartData();
+    List<Brand> getBrandPieChartData();
+
     @Select("select * from brand ")
     List<Brand> getBrands();
 }

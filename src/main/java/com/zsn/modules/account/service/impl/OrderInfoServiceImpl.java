@@ -17,40 +17,38 @@ import java.util.Optional;
 
 @Service
 public class OrderInfoServiceImpl implements OrderInfoService {
-@Autowired
-OrderInfoDao orderInfoDao;
+    @Autowired
+    OrderInfoDao orderInfoDao;
+
+     /*获取所有订单，对订单进行查询并分页*/
     @Override
     public PageInfo<OrderInfo> getOrderInfoList(SearchVo searchVo) {
-        PageHelper.startPage(searchVo.getCurrentPage(),searchVo.getPageSize());
+        PageHelper.startPage(searchVo.getCurrentPage(), searchVo.getPageSize());
         return new PageInfo<OrderInfo>(Optional.ofNullable(orderInfoDao.getOrderInfoList(searchVo)).
                 orElse(Collections.emptyList()));
     }
-
+    /*根据orderId进行删除*/
     @Override
     public Result<Object> deletedOrderInfo(int orderId) {
         orderInfoDao.deletedOrderInfo(orderId);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"删除成功") ;
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
-
+    /*修改订单*/
     @Override
     public Result<OrderInfo> updateProduct(OrderInfo orderInfo) {
         orderInfoDao.updateProduct(orderInfo);
-        return new Result<OrderInfo>(Result.ResultStatus.SUCCESS.status,"修改成功");
+        return new Result<OrderInfo>(Result.ResultStatus.SUCCESS.status, "修改成功");
     }
-
+    /*获取订单，根据订单orderId*/
     @Override
     public OrderInfo getOrderInfo(int orderId) {
-
         return orderInfoDao.getOrderInfo(orderId);
     }
-
     @Override
     public Result<OrderInfo> saveCourierNumber(OrderInfo orderInfo) {
-       orderInfoDao.saveCourierNumber(orderInfo);
-        return new Result<OrderInfo>(Result.ResultStatus.SUCCESS.status,"发货成功");
-
+        orderInfoDao.saveCourierNumber(orderInfo);
+        return new Result<OrderInfo>(Result.ResultStatus.SUCCESS.status, "发货成功");
     }
-
     @Override
     public List<List<String>> getTransaionData() {
         List<List<String>> list = new ArrayList();
@@ -73,18 +71,16 @@ OrderInfoDao orderInfoDao;
         list.add(payCounts);
         //未支付订单
         List<String> NoPayCounts = new ArrayList<>();
-        List<OrderInfo> noPays=orderInfoDao.getNoPayOrders();
+        List<OrderInfo> noPays = orderInfoDao.getNoPayOrders();
         for (OrderInfo noPay : noPays) {
             NoPayCounts.add(noPay.getCountNoPays());
         }
         list.add(NoPayCounts);
         return list;
     }
-
     @Override
     public List<Object> getInfoData() {
         List<Object> list = new ArrayList<>();
-
         list.add(orderInfoDao.getPriceAll());
         list.add(orderInfoDao.getInfoTotal());
         list.add(orderInfoDao.getSuccessInfo());
@@ -92,6 +88,4 @@ OrderInfoDao orderInfoDao;
         list.add(orderInfoDao.getRefundMoney());
         return list;
     }
-
-
 }

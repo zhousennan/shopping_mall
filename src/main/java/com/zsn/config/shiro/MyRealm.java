@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class MyRealm extends AuthorizingRealm {
     @Autowired
     UserInfoService userInfoService;
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
 
@@ -22,12 +23,12 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken Token) throws AuthenticationException {
-        String userName=(String) Token.getPrincipal();
+        String userName = (String) Token.getPrincipal();
         UserInfo user = userInfoService.getUserInfoByUserName(userName);
-        if (user==null){
-            throw  new UnknownAccountException("The account do not exit");
+        if (user == null) {
+            throw new UnknownAccountException("The account do not exit");
         }
         //getName获取MyRealm
-        return new SimpleAuthenticationInfo(user,user.getPassword(),getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }

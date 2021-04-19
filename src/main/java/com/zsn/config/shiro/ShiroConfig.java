@@ -1,7 +1,6 @@
 package com.zsn.config.shiro;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.crypto.AesCipherService;
 import org.apache.shiro.mgt.DefaultSecurityManager;
@@ -23,6 +22,7 @@ import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 @Configuration
 @Component
 public class ShiroConfig {
@@ -39,8 +39,8 @@ public class ShiroConfig {
     }
 
     @Bean
-    public UserFilter getUserFilter(){
-        UserFilter userFilter = new UserFilter()    ;
+    public UserFilter getUserFilter() {
+        UserFilter userFilter = new UserFilter();
         userFilter.setLoginUrl("/front/toFrontLogin");
         return userFilter;
     }
@@ -68,7 +68,7 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager());
         Map<String, Filter> filter = new HashMap<>();
-        filter.put("filter",getUserFilter());
+        filter.put("filter", getUserFilter());
         shiroFilter.setFilters(filter);
         shiroFilter.setLoginUrl("/account/login");
         shiroFilter.setSuccessUrl("/account/dashboard");
@@ -88,11 +88,10 @@ public class ShiroConfig {
         map.put("/account/index", "authc");
 
 
-        map.put("/front/index","anon");
-        map.put("/front/toFrontLogin","anon");
-        map.put("/front/shopCart","filter");
-        map.put("/front/toItem/{id}","filter");
-
+        map.put("/front/index", "anon");
+        map.put("/front/toFrontLogin", "anon");
+        map.put("/front/shopCart", "filter");
+        map.put("/front/toItem/{id}", "filter");
 
 
         shiroFilter.setFilterChainDefinitionMap(map);
@@ -104,7 +103,7 @@ public class ShiroConfig {
      * 注册shiro方言，让thymeleaf支持shiro标签
      */
     @Bean
-    public ShiroDialect shiroDialect(){
+    public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }
 
@@ -113,7 +112,7 @@ public class ShiroConfig {
      */
     @Bean
     @DependsOn({"lifecycleBeanPostProcessor"})
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
+    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator =
                 new DefaultAdvisorAutoProxyCreator();
         advisorAutoProxyCreator.setProxyTargetClass(true);
@@ -124,12 +123,13 @@ public class ShiroConfig {
      * 开启Shiro的注解
      */
     @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(){
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor =
                 new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
     }
+
     @Bean
     public SimpleCookie rememberMeCookie() {
         //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
@@ -166,6 +166,7 @@ public class ShiroConfig {
         simpleCookie.setMaxAge(1 * 24 * 60 * 60);
         return simpleCookie;
     }
+
     /**
      * 1、session 管理，去掉重定向后Url追加SESSIONID
      * 2、shiro默认Cookie名称是JSESSIONID，与servlet(jetty, tomcat等默认JSESSIONID)冲突，

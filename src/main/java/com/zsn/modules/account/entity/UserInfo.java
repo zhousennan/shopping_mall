@@ -78,7 +78,7 @@ public class UserInfo implements Serializable {
 
     private String adminName;
 
-     private List<Role> roleList;
+    private List<Role> roleList;
 
     public List<Role> getRoleList() {
         return roleList;

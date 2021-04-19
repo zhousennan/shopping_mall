@@ -1,4 +1,5 @@
 package com.zsn.commons.entity;
+
 /**
  * @Description SearchVo
  * @Author HymanHu
@@ -6,59 +7,59 @@ package com.zsn.commons.entity;
  */
 public class SearchVo {
 
-	public final static int DEFAULT_CURRENT_PAGE = 1;
-	public final static int DEFAULT_PAGE_SIZE = 5;
-	
-	private int currentPage;
-	private int pageSize;
-	private String keyWord;
-	private String orderBy;
-	private String sort;
+    public final static int DEFAULT_CURRENT_PAGE = 1;
+    public final static int DEFAULT_PAGE_SIZE = 5;
 
-	public void initSearchVo() {
-		if (this != null) {
-			this.setCurrentPage(this.getCurrentPage() == 0 ? DEFAULT_CURRENT_PAGE : this.getCurrentPage());
-			this.setPageSize(this.getPageSize() == 0 ? DEFAULT_PAGE_SIZE : this.getPageSize());
-		}
-	}
+    private int currentPage;
+    private int pageSize;
+    private String keyWord;
+    private String orderBy;
+    private String sort;
 
-	public int getCurrentPage() {
-		return currentPage;
-	}
+    public void initSearchVo() {
+        if (this != null) {
+            this.setCurrentPage(this.getCurrentPage() == 0 ? DEFAULT_CURRENT_PAGE : this.getCurrentPage());
+            this.setPageSize(this.getPageSize() == 0 ? DEFAULT_PAGE_SIZE : this.getPageSize());
+        }
+    }
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
+    public int getCurrentPage() {
+        return currentPage;
+    }
 
-	public int getPageSize() {
-		return pageSize;
-	}
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
+    public int getPageSize() {
+        return pageSize;
+    }
 
-	public String getKeyWord() {
-		return keyWord;
-	}
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
-	public void setKeyWord(String keyWord) {
-		this.keyWord = keyWord;
-	}
+    public String getKeyWord() {
+        return keyWord;
+    }
 
-	public String getOrderBy() {
-		return orderBy;
-	}
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
 
-	public void setOrderBy(String orderBy) {
-		this.orderBy = orderBy;
-	}
+    public String getOrderBy() {
+        return orderBy;
+    }
 
-	public String getSort() {
-		return sort;
-	}
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
 
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
 }

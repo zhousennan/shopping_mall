@@ -1,7 +1,6 @@
 package com.zsn.config;
 
 
-
 import com.zsn.interceptor.RequestViewInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -20,12 +19,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private RequestViewInterceptor requestViewInterceptor;
     @Autowired
     private ResourceConfigBean resourceConfigBean;
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestViewInterceptor).addPathPatterns("/**");
     }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         String osName = System.getProperty("os.name");

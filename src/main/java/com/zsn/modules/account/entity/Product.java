@@ -12,46 +12,46 @@ import java.util.Date;
 public class Product implements Serializable {
     private static final long serialVersionUID = -93541174339272398L;
     /**
-    * 商品id
-    */
+     * 商品id
+     */
     private Integer productId;
     /**
-    * 商品名称
-    */
+     * 商品名称
+     */
     private String productName;
     /**
-    * 商品副标题
-    */
+     * 商品副标题
+     */
     private String productTitle;
     /**
-    * 产品主图名称
-    */
+     * 产品主图名称
+     */
     private String productMainimage;
     /**
-    * 商品详情
-    */
+     * 商品详情
+     */
     private String productDetail;
     /**
-    * 商品品牌
-    */
+     * 商品品牌
+     */
     private String productBrand;
     /**
-    * 价格,单位-元保留两位小数
-    */
+     * 价格,单位-元保留两位小数
+     */
     private Double productPrice;
     /**
-    * 库存数量
-    */
+     * 库存数量
+     */
     private Integer productStock;
     /**
-    * 商品状态.1-在售 2-下架
-    */
+     * 商品状态.1-在售 2-下架
+     */
     private Integer productStatus;
     /**
-    * 上架时间
-    */
+     * 上架时间
+     */
     private String productCreatetime;
-    
+
     private String productType;
 
 

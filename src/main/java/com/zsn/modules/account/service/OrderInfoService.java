@@ -22,5 +22,5 @@ public interface OrderInfoService {
 
     List<List<String>> getTransaionData();
 
-   List<Object> getInfoData();
+    List<Object> getInfoData();
 }

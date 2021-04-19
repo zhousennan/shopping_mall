@@ -11,24 +11,24 @@ import java.io.Serializable;
 public class AddressInfo implements Serializable {
     private static final long serialVersionUID = -53349662034903977L;
     /**
-    * 地址的id用来区分地址
-    */
+     * 地址的id用来区分地址
+     */
     private int addressId;
-    
+
     private String address;
-    
+
     private String userName;
     /**
-    * 是否为默认地址,1为默认地址,0为非默认地址
-    */
+     * 是否为默认地址,1为默认地址,0为非默认地址
+     */
     private Integer status;
     /**
-    * 联系电话
-    */
+     * 联系电话
+     */
     private String telPhone;
     /**
-    * 接受者姓名
-    */
+     * 接受者姓名
+     */
     private String receiverName;
 
 

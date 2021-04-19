@@ -1,4 +1,5 @@
 package com.zsn.modules.account.entity;
+
 import java.io.Serializable;
 
 /**
@@ -9,11 +10,11 @@ import java.io.Serializable;
  */
 public class Brand implements Serializable {
     private static final long serialVersionUID = -74706040313085708L;
-    
+
     private Integer brandId;
-    
+
     private String brandName;
-    
+
     private String brandDescription;
 
     private Integer count;

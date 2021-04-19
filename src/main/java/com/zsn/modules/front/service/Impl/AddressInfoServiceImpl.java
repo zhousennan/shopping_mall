@@ -23,7 +23,6 @@ public class AddressInfoServiceImpl implements AddressInfoService {
     public List<AddressInfo> getAddressByUser() {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         return Optional.ofNullable(addressInfoDao.getAddressByUser(user.getUserName())).orElse(Collections.emptyList());
-
     }
 
     @Override
@@ -31,9 +30,8 @@ public class AddressInfoServiceImpl implements AddressInfoService {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         addressInfo.setUserName(user.getUserName());
         addressInfo.setStatus(0);
-
         addressInfoDao.insertAddress(addressInfo);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"新增地址成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增地址成功");
     }
 
     @Override
@@ -41,6 +39,4 @@ public class AddressInfoServiceImpl implements AddressInfoService {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         return addressInfoDao.getAddress(user.getUserName());
     }
-
-
 }

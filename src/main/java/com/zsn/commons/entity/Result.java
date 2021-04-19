@@ -47,9 +47,10 @@ public class Result<T> {
         this.object = object;
     }
 
-    public enum ResultStatus{
-       SUCCESS(200),FAILD(500) ;
+    public enum ResultStatus {
+        SUCCESS(200), FAILD(500);
         public int status;
+
         ResultStatus(int status) {
             this.status = status;
         }

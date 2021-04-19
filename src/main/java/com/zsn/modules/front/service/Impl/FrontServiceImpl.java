@@ -55,20 +55,20 @@ public class FrontServiceImpl implements FrontService {
         //未支付
         orderInfo.setOrderPaymentStatus("0");
         //时间
-        SimpleDateFormat sdf =   new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
+        SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd HH:mm:ss ");
         orderInfo.setTradingTime(sdf.format(new Date()));
         orderInfo.setExpressDeliveryCompany("京东快递");
         orderInfo.setDeletedStatus("1");
         orderInfo.setOrderStatus(1);
         orderInfo.setOrderDeliverGoodsStatus(0);
         frontDao.insertOrderInfo(orderInfo);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"立即购买");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "立即购买");
     }
 
     @Override
     public List<OrderInfo> initPayPage() {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
-        return  Optional.ofNullable(frontDao.initPayPage(user.getUserName())).orElse(Collections.emptyList());
+        return Optional.ofNullable(frontDao.initPayPage(user.getUserName())).orElse(Collections.emptyList());
     }
 
     @Override
@@ -78,17 +78,16 @@ public class FrontServiceImpl implements FrontService {
     }
 
 
-
     @Override
     public Result<Object> payOrder(int payMoney) {
         //1 改变用户的钱   2改变库存 3改变订单状态
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
-        if (user.getCount()<payMoney){
-            return new Result<>(Result.ResultStatus.FAILD.status,"余额不足");
-        }else {
-            frontDao.updataUserMoney(user.getUserName(),payMoney);
+        if (user.getCount() < payMoney) {
+            return new Result<>(Result.ResultStatus.FAILD.status, "余额不足");
+        } else {
+            frontDao.updataUserMoney(user.getUserName(), payMoney);
             frontDao.updateOrderStatuePay(user.getUserName());
-            return new Result<>(Result.ResultStatus.SUCCESS.status,"支付成功");
+            return new Result<>(Result.ResultStatus.SUCCESS.status, "支付成功");
         }
 
 //

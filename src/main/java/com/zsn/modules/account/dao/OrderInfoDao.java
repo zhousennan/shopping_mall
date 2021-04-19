@@ -46,6 +46,7 @@ public interface OrderInfoDao {
 
     @Select("select * from order_info where order_id=#{orderId}")
     OrderInfo getOrderInfo(int orderId);
+
     @Update("update order_info set courier_number=#{courierNumber},order_deliver_goods_status=1 " +
             " where order_id=#{orderId} and order_deliver_goods_status=0")
     void saveCourierNumber(OrderInfo orderInfo);
@@ -121,15 +122,19 @@ public interface OrderInfoDao {
     //订单总数
     @Select("select count(*) from order_info")
     int getInfoTotal();
+
     //成交的钱
     @Select("select SUM(product_total_price) from order_info where order_payment_status=1 and refund_status=1")
     Double getPriceAll();
+
     //完成的订单，已评价代表完成
     @Select("select count(*) from order_info where order_status=1")
     int getSuccessInfo();
+
     //交易失败数量
     @Select("select count(*) from order_info where refund_status=-1")
     int getFailTotal();
+
     //退款的钱
     @Select("select sum(product_total_price)  from order_info where refund_status=-1")
     Double getRefundMoney();

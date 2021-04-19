@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface  AddressInfoDao{
+public interface AddressInfoDao {
 
     @Select("select * from address_info where user_name=#{userName} ")
     List<AddressInfo> getAddressByUser(String userName);

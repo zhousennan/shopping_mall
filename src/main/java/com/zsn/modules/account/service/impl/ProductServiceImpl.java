@@ -24,25 +24,25 @@ public class ProductServiceImpl implements ProductService {
     ProductDao productDao;
     @Autowired
     ResourceConfigBean resourceConfigBean;
+
     @Override
     public PageInfo<Product> getProductList(SearchVo searchVo) {
-        PageHelper.startPage(searchVo.getCurrentPage(),searchVo.getPageSize());
+        PageHelper.startPage(searchVo.getCurrentPage(), searchVo.getPageSize());
         return new PageInfo<Product>(Optional.ofNullable(productDao.getProductList(searchVo)).
                 orElse(Collections.emptyList()));
     }
 
 
-
     @Override
     public Result<Object> deleteProduct(int productId) {
         productDao.deleteProduct(productId);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"删除成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
 
     @Override
     public Result<Product> updateProduct(Product product) {
         productDao.updateProduct(product);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"修改成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "修改成功");
     }
 
     @Override
@@ -89,6 +89,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Result<Product> insertProduct(Product product) {
         productDao.insertProduct(product);
-        return new Result<>(Result.ResultStatus.SUCCESS.status,"新增成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增成功");
     }
 }

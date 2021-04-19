@@ -12,46 +12,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/front")
+@RequestMapping(value = "front")
 public class FrontController {
-@Autowired
+    @Autowired
     FrontService frontService;
-    @GetMapping(value = "/index")
-    public String index(){
+
+    @GetMapping(value = "index")
+    public String index() {
         return "frontPage/index";
     }
-    @GetMapping(value = "/itemShow")
-    public String itemShow(){
+
+    @GetMapping(value = "itemShow")
+    public String itemShow() {
         return "frontPage/item/item_show";
     }
 
-    @GetMapping(value = "/shopCart")
-    public String shopCart(){
+    @GetMapping(value = "shopCart")
+    public String shopCart() {
         return "frontPage/item/shopCart";
     }
-    @GetMapping(value = "toItem/{id}")
-    public String toItem(@PathVariable int id , ModelMap modelMap){
 
-        modelMap.addAttribute("productId",id);
+    @GetMapping(value = "toItem/{id}")
+    public String toItem(@PathVariable int id, ModelMap modelMap) {
+
+        modelMap.addAttribute("productId", id);
         return "frontPage/item/item_show";
     }
 
-    @GetMapping(value = "/toFrontLogin")
-    public String login(){
+    @GetMapping(value = "toFrontLogin")
+    public String login() {
         return "frontPage/frontLogin";
     }
 
-    @GetMapping(value = "/shopCartPay")
-    public String shopCartPay(){
+    @GetMapping(value = "shopCartPay")
+    public String shopCartPay() {
         return "frontPage/item/shopCart_pay";
     }
-    @GetMapping(value = "/addressEdit")
-    public String address(){
+
+    @GetMapping(value = "addressEdit")
+    public String address() {
         return "frontPage/item/addressEdit";
     }
-
-
-
 
 
 }

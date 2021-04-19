@@ -15,7 +15,7 @@ public interface RoleService {
 
     PageInfo<UserInfo> getAdminList(SearchVo searchVo);
 
-    Result<UserInfo> insertAdmin( UserInfo userInfo);
+    Result<UserInfo> insertAdmin(UserInfo userInfo);
 
     List<Role> getRoles();
 }

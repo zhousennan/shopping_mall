@@ -56,6 +56,7 @@ public interface RoleDao {
 
     @Select("select * from role ")
     List<Role> getRoles();
+
     @Insert("insert into user_role (user_id,role_id) values (#{userId},#{roleId})")
     void insertRoleUser(int userId, Integer roleId);
 }

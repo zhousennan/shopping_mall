@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AddressInfoService {
 
-     List<AddressInfo> getAddressByUser();
+    List<AddressInfo> getAddressByUser();
 
     Result<Object> insertAddress(AddressInfo addressInfo);
 

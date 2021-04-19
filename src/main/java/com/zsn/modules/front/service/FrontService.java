@@ -11,11 +11,11 @@ public interface FrontService {
 
     List<Product> hotProduct();
 
-    List<Product>  manProductList();
+    List<Product> manProductList();
 
-    List<Product>  womanProductList();
+    List<Product> womanProductList();
 
-    List<Product>  childProductList();
+    List<Product> childProductList();
 
     Product getProductById(int id);
 
@@ -23,7 +23,7 @@ public interface FrontService {
 
     List<OrderInfo> initPayPage();
 
-    int  getUserInfoAccountByUserName();
+    int getUserInfoAccountByUserName();
 
     Result<Object> payOrder(int payMoney);
 }

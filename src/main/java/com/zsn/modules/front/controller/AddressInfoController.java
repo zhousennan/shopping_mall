@@ -16,19 +16,19 @@ public class AddressInfoController {
     @Autowired
     AddressInfoService addressInfoService;
 
-    @GetMapping(value = "/address")
+    @GetMapping(value = "address")
     public List<AddressInfo> getAddressByUser() {
         return addressInfoService.getAddressByUser();
     }
 
 
-    @PostMapping(value = "/insertAddress",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Object> insertAddress(@RequestBody AddressInfo addressInfo){
+    @PostMapping(value = "insertAddress", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Object> insertAddress(@RequestBody AddressInfo addressInfo) {
         return addressInfoService.insertAddress(addressInfo);
     }
 
-    @GetMapping(value = "/getAddress")
-    public List<AddressInfo> getAddress(){
+    @GetMapping(value = "getAddress")
+    public List<AddressInfo> getAddress() {
         return addressInfoService.getAddress();
     }
 
