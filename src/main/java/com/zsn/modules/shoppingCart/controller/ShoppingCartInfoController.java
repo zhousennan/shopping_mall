@@ -2,36 +2,42 @@ package com.zsn.modules.shoppingCart.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.zsn.commons.entity.Result;
-import com.zsn.commons.entity.SearchVo;
+
 import com.zsn.modules.shoppingCart.entities.ShoppingCartInfo;
 import com.zsn.modules.shoppingCart.service.Impl.ShoppingCartInfoServiceImpl;
-import com.zsn.modules.shoppingCart.service.ShoppingCartInfoService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ShoppingCartInfoController {
 
-@Autowired
+    @Autowired
     private ShoppingCartInfoServiceImpl shoppingCartInfoService;
 
-@PostMapping(value = "shopping/insert")
-public Result<ShoppingCartInfo> insert(@RequestBody ShoppingCartInfo shoppingCartInfo){
-  return shoppingCartInfoService.insert( shoppingCartInfo);
-}
-
-    public Result<ShoppingCartInfo> update (ShoppingCartInfo shoppingCartInfo){
-    return shoppingCartInfoService.update(shoppingCartInfo);
+    @PostMapping(value = "shoppingCart/insert",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<ShoppingCartInfo> insert(@RequestBody ShoppingCartInfo shoppingCartInfo) {
+        return shoppingCartInfoService.insert(shoppingCartInfo);
     }
 
-    public Result<Object> deleted (String userName, int productId){
-    return shoppingCartInfoService.deleted(userName,productId);
+    @PutMapping(value = "shoppingCart/update",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<ShoppingCartInfo> update(ShoppingCartInfo shoppingCartInfo) {
+        return shoppingCartInfoService.update(shoppingCartInfo);
     }
 
-    public PageInfo<ShoppingCartInfo> selectAll(String userName, SearchVo searchVo){
-    return shoppingCartInfoService.selectAll(userName,searchVo);
+    @DeleteMapping(value = "shoppingCart/deleted/{userName}/{productId}")
+    public Result<Object> deleted(@PathVariable String userName,@PathVariable int productId) {
+        return shoppingCartInfoService.deleted(userName, productId);
+    }
+
+    @GetMapping(value = "shoppingCart/selectAll")
+    public List<ShoppingCartInfo> selectAll(String userName) {
+
+        return shoppingCartInfoService.selectAll(userName);
     }
 
 

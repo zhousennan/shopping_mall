@@ -10,6 +10,7 @@ import com.zsn.modules.account.entity.Product;
 import com.zsn.modules.account.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -34,12 +35,14 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
+    @Transactional
     public Result<Object> deleteProduct(int productId) {
         productDao.deleteProduct(productId);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
 
     @Override
+    @Transactional
     public Result<Product> updateProduct(Product product) {
         productDao.updateProduct(product);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "修改成功");
@@ -87,6 +90,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public Result<Product> insertProduct(Product product) {
         productDao.insertProduct(product);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "新增成功");

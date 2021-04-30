@@ -12,6 +12,7 @@ import com.zsn.modules.account.service.RoleService;
 import com.zsn.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -22,9 +23,9 @@ import java.util.Optional;
 @Service
 public class RoleServiceImpl implements RoleService {
     @Autowired
-    RoleDao roleDao;
+   private RoleDao roleDao;
     @Autowired
-    UserInfoDao userInfoDao;
+   private UserInfoDao userInfoDao;
 
     @Override
     public PageInfo<Role> getRoleList(SearchVo searchVo) {
@@ -40,6 +41,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public Result<UserInfo> insertAdmin(UserInfo userInfo) {
 
         UserInfo userByUserName = userInfoDao.getUserByUserName(userInfo.getUserName());
@@ -64,6 +66,12 @@ public class RoleServiceImpl implements RoleService {
         }
 
         return new Result<>(Result.ResultStatus.SUCCESS.status, "新增管理员成功");
+    }
+
+    @Override
+    public Role getRoleByUserName(String userName) {
+
+        return roleDao.getRoleByUserName(userName);
     }
 
     @Override

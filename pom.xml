@@ -137,6 +137,21 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.cb372</groupId>
+            <artifactId>metrics-sigar</artifactId>
+            <version>0.2.2</version>
+        </dependency>
+
+
+
+        <!--快重启-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 可选 -->
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -146,6 +161,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
            </plugin>
         </plugins>
+
+
+
     </build>
 
     <pluginRepositories>

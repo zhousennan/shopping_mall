@@ -22,7 +22,7 @@ public class SystemInfoServiceImpl implements SystemInfoService {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         systemInfo.setNowDate(df.format(new Date()));
         systemInfo.setIp("10.12.4.8");
-     UserInfo userInfo = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+        UserInfo userInfo = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         systemInfo.setUserName(userInfo.getUserName());
         return systemInfo;
     }

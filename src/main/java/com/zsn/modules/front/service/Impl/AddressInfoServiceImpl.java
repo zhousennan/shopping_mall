@@ -8,6 +8,7 @@ import com.zsn.modules.front.service.AddressInfoService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +27,7 @@ public class AddressInfoServiceImpl implements AddressInfoService {
     }
 
     @Override
+    @Transactional
     public Result<Object> insertAddress(AddressInfo addressInfo) {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         addressInfo.setUserName(user.getUserName());

@@ -7,6 +7,7 @@ import com.zsn.commons.entity.SearchVo;
 import com.zsn.modules.account.dao.UserInfoDao;
 
 import com.zsn.modules.account.entity.UserInfo;
+import com.zsn.modules.account.service.RoleService;
 import com.zsn.modules.account.service.UserInfoService;
 import com.zsn.utils.MD5Util;
 import org.apache.shiro.SecurityUtils;
@@ -15,6 +16,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -22,6 +24,9 @@ import java.util.*;
 public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     UserInfoDao userInfoDao;
+
+    @Autowired
+    private RoleService roleService;
     /*获取用户列表*/
     @Override
     public PageInfo<UserInfo> getUsersBySearchVo(SearchVo searchVo) {
@@ -43,6 +48,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
     /*删除一个用户*/
     @Override
+    @Transactional
     public Result<Object> deleteUserInfo(int userId) {
         userInfoDao.deletedUserRoleByUserId(userId);
         userInfoDao.deleteUserInfo(userId);
@@ -50,6 +56,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
     /*修改用户信息*/
     @Override
+    @Transactional
     public Result<UserInfo> updateUserInfo(UserInfo userInfo) {
         userInfoDao.updateUserInfo(userInfo);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "修改成功");
@@ -61,22 +68,31 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
     @Override
     public Result<UserInfo> login(UserInfo userInfo) {
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken usernamePasswordToken =
-                new UsernamePasswordToken(userInfo.getUserName(), MD5Util.getMD5(userInfo.getPassword()));
-        usernamePasswordToken.setRememberMe(userInfo.isRememberMe());
-        try {
-            subject.login(usernamePasswordToken);
-            //   subject.checkRoles();
-        } catch (Exception e) {
-            e.printStackTrace();
+       /* if (!"supper_admain".equals(roleService.getRoleByUserName(userInfo.getUserName()))){
+          return new Result<UserInfo>(Result.ResultStatus.FAILD.status,
+                    "用户角色权限不够");
+        }else if (!"admain".equals(roleService.getRoleByUserName(userInfo.getUserName()))){
             return new Result<UserInfo>(Result.ResultStatus.FAILD.status,
-                    "username or password error");
+                    "用户角色权限不够");
+        }else {*/
+
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken usernamePasswordToken =
+                    new UsernamePasswordToken(userInfo.getUserName(), MD5Util.getMD5(userInfo.getPassword()));
+            usernamePasswordToken.setRememberMe(userInfo.isRememberMe());
+            try {
+                subject.login(usernamePasswordToken);
+                //   subject.checkRoles();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new Result<UserInfo>(Result.ResultStatus.FAILD.status,
+                        "username or password error");
+            }
+            Session session = subject.getSession();
+            session.setAttribute("user", (UserInfo) subject.getPrincipal());
+            return new Result<UserInfo>(Result.ResultStatus.SUCCESS.status, "Login success");
         }
-        Session session = subject.getSession();
-        session.setAttribute("user", (UserInfo) subject.getPrincipal());
-        return new Result<UserInfo>(Result.ResultStatus.SUCCESS.status, "Login success");
-    }
+
     /*通过用户信息进行查询*/
     @Override
     public UserInfo getUserInfoByUserName(String userName) {

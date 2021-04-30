@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/frontStatic/favicon.ico">
@@ -50,18 +50,6 @@
             <div class="shop-title">收货地址</div>
             <form action="" class="shopcart-form__box">
                 <div class="addr-radio" id="address">
-
-                    <!--<div class="radio-line radio-box active">
-                        <label class="radio-label ep" title="福建省 福州市 鼓楼区 温泉街道 五四路159号世界金龙大厦20层B北 福州rpg.blue网络 （喵喵喵 收） 153****9999">
-                            <input name="addr" checked="" value="0" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
-                            福建省 福州市 鼓楼区 温泉街道
-                            五四路159号世界金龙大厦20层B北 福州rpg.blue网络
-                            （喵喵喵 收） 153****9999
-                        </label>
-                        <a href="javascript:;" class="default">默认地址</a>
-                        <a href="udai_address_edit.html" class="edit">修改</a>
-                    </div>-->
-
                     <script>
                         $(document).ready(function () {
                             initAddress();
@@ -109,28 +97,12 @@
                         </tr>
                         </thead>
                         <tbody id="tbody">
-                       <!-- <tr>
-                            <th scope="row"><a href="item_show.html"><div class="img"><img src="/frontStatic/images/temp/M-003.jpg" alt="" class="cover"></div></a></th>
-                            <td>
-                                <div class="name ep3">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-                                <div class="type c9">颜色分类：深棕色  尺码：均码</div>
-                            </td>
-                            <td>¥20.0</td>
-                            <td>1</td>
-                            <td>¥0.0</td>
-                            <td>¥20.0</td>
-                        </tr>-->
                         </tbody>
                     </table>
                     <script>
                         $(document).ready(function () {
                             initPage();
                             initCount();
-
-
-                            // $("#immediatelyProduct").bind('click',function () {
-                            //     immediatelyProduct()
-                            // });
                         });
 
                         function initPage() {
@@ -162,7 +134,7 @@
                                     $("#orderId").text(orderId);
                                 },
                                 error: function (data) {
-                                    layer.alert(data.responseText, {icon: 0});
+                                    layer.alert(data.massage, {icon: 0});
                                 }
                             })
                         }
@@ -239,9 +211,7 @@
                     });
 
                     function pay() {
-
                         var payMoney=$("#sumPrice").text();
-                        console.log(payMoney);
                         $.ajax({
                             url: "/api/payOrder/"+payMoney,
                             type: "put",
@@ -249,25 +219,16 @@
                                 alert(data.massage);
                                 location.href="/front/index";
                             },error:{
-
                             }
-
-
                         })
-
                     }
                 </script>
             </form>
         </div>
     </section>
 </div>
-
-
-
-
 <!--右侧信息-->
 <div th:replace="/frontPage/fragments/right"></div>
-
 <!-- 底部信息 -->
 <div th:replace="/frontPage/fragments/footer"></div>
 </body>

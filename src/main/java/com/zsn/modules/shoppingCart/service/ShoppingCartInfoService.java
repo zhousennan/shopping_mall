@@ -15,5 +15,5 @@ public interface ShoppingCartInfoService {
 
    public Result<Object> deleted (String userName, int productId);
 
-   public PageInfo<ShoppingCartInfo> selectAll(String userName, SearchVo searchVo);
+   public List<ShoppingCartInfo> selectAll(String userName);
 }

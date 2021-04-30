@@ -9,6 +9,7 @@ import com.zsn.modules.account.entity.Brand;
 import com.zsn.modules.account.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -24,18 +25,21 @@ public class BrandServiceImpl implements BrandService {
     }
     /*新增品牌*/
     @Override
+    @Transactional
     public Result<Brand> insertOrder(Brand brand) {
         brandDao.insertOrder(brand);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "插入成功");
     }
     /*更加品牌id进行删除*/
     @Override
+    @Transactional
     public Result<Object> deletedBrand(int brandId) {
         brandDao.deletedBrand(brandId);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
     /*品牌的修改*/
     @Override
+    @Transactional
     public Result<Brand> updateBrand(Brand brand) {
         brandDao.updateBrand(brand);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "修改成功");

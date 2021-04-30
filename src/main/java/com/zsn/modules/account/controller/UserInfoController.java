@@ -3,10 +3,11 @@ package com.zsn.modules.account.controller;
 import com.github.pagehelper.PageInfo;
 import com.zsn.commons.entity.Result;
 import com.zsn.commons.entity.SearchVo;
+import com.zsn.modules.account.entity.SystemInfo;
 import com.zsn.modules.account.entity.UserInfo;
+import com.zsn.modules.account.service.SystemInfoService;
 import com.zsn.modules.account.service.UserInfoService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,8 @@ public class UserInfoController {
 
     @Autowired
     UserInfoService userInfoService;
-
+@Autowired
+private SystemInfoService systemInfoService;
     /**
      * 查询所有userInfo
      * 127.0.0.1:8080/api/userInfos ---- get
@@ -65,8 +67,8 @@ public class UserInfoController {
         return userInfoService.getUserInfoByUserId(userId);
     }
 
-    @ApiOperation("登录接口")
-    @ApiImplicitParam(name="userInfo",value = "对应的userinfo信息",dataType = "json")
+
+
     @PostMapping(value = "login", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Result<UserInfo> login(@RequestBody UserInfo userInfo) {
         return userInfoService.login(userInfo);
@@ -75,5 +77,10 @@ public class UserInfoController {
     @PostMapping(value = "gradeData")
     public List<List<Object>> getUserGradData() {
         return userInfoService.getUserGradData();
+    }
+
+    @GetMapping(value = "systemInfo")
+    public SystemInfo getSystemInfo(){
+        return  systemInfoService.getSystemInfo();
     }
 }

@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 public class FrontServiceImpl implements FrontService {
     @Autowired
-    FrontDao frontDao;
+  private   FrontDao frontDao;
 
 
     @Override
@@ -89,10 +89,5 @@ public class FrontServiceImpl implements FrontService {
             frontDao.updateOrderStatuePay(user.getUserName());
             return new Result<>(Result.ResultStatus.SUCCESS.status, "支付成功");
         }
-
-//
-//        frontDao.payMoney(payMoney);
-
-
     }
 }

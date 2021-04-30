@@ -17,5 +17,7 @@ public interface RoleService {
 
     Result<UserInfo> insertAdmin(UserInfo userInfo);
 
+    Role getRoleByUserName (String userName);
+
     List<Role> getRoles();
 }

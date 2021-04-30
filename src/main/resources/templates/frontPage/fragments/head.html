@@ -5,8 +5,8 @@
             <a href="temp_article/udai_article4.html">帮助中心</a>
         </div>
         <div class="pull-right">
-            <a href="front/toFrontLogin"><span class="cr">登录</span></a>
-            <a href="front/toFrontLogin?p=register">注册</a>
+            <a href="/front/toFrontLogin"><span class="cr">登录</span></a>
+            <a href="/front/toFrontLogin?p=register">注册</a>
             <a href="udai_welcome.html">我的信息</a>
             <a href="udai_order.html">我的订单</a>
 
@@ -37,8 +37,8 @@
             </p>
         </div>
         <div class="cart-box">
-            <a href="udai_shopcart.html" class="cart-but">
-                <i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+            <a href="/goCartPage" class="cart-but">
+                <i class="iconfont icon-shopcart cr fz16"></i> 购物车
             </a>
         </div>
     </div>
@@ -75,11 +75,9 @@
         <ul class="nva-list">
             <a href="index.html"><li class="active">首页</li></a>
             <a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-            <a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-            <a href="class_room.html"><li>U袋学堂</li></a>
             <a href="enterprise_id.html"><li>企业账号</li></a>
-            <a href="udai_contract.html"><li>诚信合约</li></a>
-            <a href="item_remove.html"><li>实时下架</li></a>
+
+
         </ul>
         <div class="user-info__box">
             <div class="login-box">
@@ -87,12 +85,13 @@
                     <img src="/frontStatic/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
                 </div>
                 <!-- 已登录 -->
-                <div shiro:notAuthenticated="" class="name c6">Hi~ <span class="cr">18759808122</span></div>
-
-
+                <div shiro:Authenticated="user" class="name c6">   Hi~ <span class="cr" >
+                            <shiro:principal property="userName"/>
+                </span>
+                </div>
                 <!-- 未登录 -->
                 <div shiro:notAuthenticated="" class="name c6">Hi~ 你好</div>
-                <div shiro:notAuthenticated="" class="point c6"><a href="front/toFrontLogin">点此登录</a>，发现更多精彩</div>
+                <div shiro:notAuthenticated="" class="point c6"><a href="/front/toFrontLogin">点此登录</a>，发现更多精彩</div>
 
             </div>
             <div class="agent-box">
@@ -105,30 +104,7 @@
                     <p><span class="cr">9527</span>位代销商</p>
                 </a>
             </div>
-            <div class="verify-qq">
-                <div class="title">
-                    <i class="fake"></i>
-                    <span class="fz12">真假QQ客服验证-远离骗子</span>
-                </div>
-                <form class="input-group">
-                    <input class="form-control" placeholder="输入客服QQ号码" type="text">
-                    <span class="input-group-btn">
-							<button class="btn btn-primary submit" id="verifyqq" type="button">验证</button>
-						</span>
-                </form>
-                <script>
-                    $(function() {
-                        $('#verifyqq').click(function() {
-                            DJMask.open({
-                                width:"400px",
-                                height:"150px",
-                                title:"U袋网提示您：",
-                                content:"<b>该QQ不是客服-谨防受骗！</b>"
-                            });
-                        });
-                    });
-                </script>
-            </div>
+
             <div class="tags">
                 <div class="tag"><i class="iconfont icon-real fz16"></i> 品牌正品</div>
                 <div class="tag"><i class="iconfont icon-credit fz16"></i> 信誉认证</div>

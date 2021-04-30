@@ -49,8 +49,8 @@
             </form>
         </div>
         <div class="cart-box">
-            <a href="udai_shopcart.html" class="cart-but">
-                <i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+            <a href="/goCartPage" class="cart-but">
+                <i class="iconfont icon-shopcart cr fz16"></i> 购物车
             </a>
         </div>
     </div>
@@ -102,18 +102,11 @@
                     <a href="javascript:;" class="btn btn-default btn-prev"></a>
                     <div class="thumb-list">
                         <ul class="wrapper clearfix" id="yulangImage">
-                            <!--                            预览图-->
-                            <!-- <li class="item active" data-src="/frontStatic/images/temp/S-001-1_b.jpg">
-                                 <img class="cover"src="/frontStatic/images/temp/S-001-1_s.jpg" alt="商品预览图">
-                             </li>-->
                         </ul>
                     </div>
                     <a href="javascript:;" class="btn btn-default btn-next"></a>
                 </div>
-                <!--   <div class="big-box" id="bigImage">
-                       <img src="/frontStatic/images/temp/S-001-1_b.jpg"
-                                             alt="重回汉唐 旧忆 原创设计日常汉服女款绣花长褙子吊带改良宋裤春夏">
-                   </div>-->
+
             </div>
             <script src="/frontStatic/js/jquery.magnifier.js"></script>
             <script>
@@ -131,11 +124,8 @@
                             售价：<span class="price" id="price"></span>
                         </div>
                         <div class="vip-price-panel pull-right">
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="item-key">
@@ -192,7 +182,7 @@
                                     <a class="amount-but sub"></a>
                                 </div>
                             </div>
-                            <div class="item-stock"><span style="margin-left: 10px;">库存 <b id="Stock"></b> 件</span>
+                            <div class="item-stock"><span style="margin-left: 10px;">库存<b id="Stock"></b>件</span>
                             </div>
                             <input type="hidden" id="productId" th:value="${productId}">
                             <script>
@@ -220,19 +210,13 @@
                                                 "                                <img class=\"cover\"src=\"" + data.productMainimage + "\"  alt=\"商品预览图\">\n" +
                                                 "                            </li> <input id=\"imageInput\" hidden value=\"" + data.productMainimage + "\">"
                                             $("#yulangImage").append(html1);
-
-
                                             $("#topTitle").text(data.productTitle);
                                             $("#minTitle").text(data.productTitle);
                                             $("#price").text(data.productPrice);
                                             $("#Stock").text(data.productStock);
                                         }
-
                                     })
-
                                 }
-
-
                             </script>
 
 
@@ -270,29 +254,64 @@
                     <div class="item-action clearfix bgf5">
                         <a id="immediatelyProduct" rel="nofollow" data-addfastbuy="true" title="点击此按钮，到下一步确认购买信息。"
                            role="button" class="item-action__buy">立即购买</a>
-                        <a href="/front/shopCart" rel="nofollow" data-addfastbuy="true" role="button"
+
+                        <a id="insertShoppingCart" rel="nofollow" data-addfastbuy="flase" role="button"
                            class="item-action__basket">
                             <i class="iconfont icon-shopcart"></i> 加入购物车
                         </a>
                     </div>
                 </div>
             </div>
+            <h2 id="userName" hidden><shiro:principal property="userName"/></h2>
         </div>
 
         <script>
+
+
+
             $(document).ready(function () {
 
                 $("#immediatelyProduct").bind('click',function () {
                     immediatelyProduct()
                 });
+
+                $("#insertShoppingCart").bind('click',function (){
+                    insertShoppingCart()
+                })
             });
+
+            function insertShoppingCart(){
+                var shoppingCartInfo = {};
+                shoppingCartInfo.userName =  $("#userName").text();
+                shoppingCartInfo.productName =$("#topTitle").text();
+                shoppingCartInfo.productMainImage = $("#imageInput").val();
+                shoppingCartInfo.productNumber = $("#count").val();
+                shoppingCartInfo.productId = $("#productId").val();
+                shoppingCartInfo.productPrice  = $("#price").text()*$("#count").val();
+                shoppingCartInfo.productTotalPrice=$("#price").text();
+
+                $.ajax({
+                    url: "/shoppingCart/insert",
+                    type:"post",
+                    contentType: "application/json",
+                    data: JSON.stringify(shoppingCartInfo),
+                    success: function (data) {
+                        alert(data.massage);
+                        initPage();
+                    },
+                    error: function (data) {
+                        window.location.href = "/front/toFrontLogin";
+                    }
+                })
+            }
+
 
             function immediatelyProduct() {
                 var orderInfo = {};
                 orderInfo.productName = $("#topTitle").text();
                 orderInfo.imageMain=$("#imageInput").val();
                 //总价
-                orderInfo.productTotalPrice = $("#price").text();
+                orderInfo.productTotalPrice = $("#price").text()*$("#count").val();
                 //个数
                 orderInfo.orderNumber = $("#count").val();
                 orderInfo.orderProductId = $("#productId").val();

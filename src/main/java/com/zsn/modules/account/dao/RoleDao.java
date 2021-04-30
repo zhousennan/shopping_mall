@@ -59,4 +59,18 @@ public interface RoleDao {
 
     @Insert("insert into user_role (user_id,role_id) values (#{userId},#{roleId})")
     void insertRoleUser(int userId, Integer roleId);
+
+    @Select("SELECT\n" +
+            "\trole.role_name\n" +
+            "FROM\n" +
+            "\tuser_info as u\n" +
+            "\tINNER JOIN\n" +
+            "\tuser_role\n" +
+            "\tON \n" +
+            "\t\tu.user_id = user_role.user_id\n" +
+            "\tINNER JOIN\n" +
+            "\trole\n" +
+            "\tON \n" +
+            "\t\tuser_role.role_id = role.role_id where u.user_name=#{userName}")
+    public Role getRoleByUserName(String userName);
 }

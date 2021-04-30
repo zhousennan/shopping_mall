@@ -9,6 +9,7 @@ import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.service.OrderInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,12 +30,14 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
     /*根据orderId进行删除*/
     @Override
+    @Transactional
     public Result<Object> deletedOrderInfo(int orderId) {
         orderInfoDao.deletedOrderInfo(orderId);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
     /*修改订单*/
     @Override
+    @Transactional
     public Result<OrderInfo> updateProduct(OrderInfo orderInfo) {
         orderInfoDao.updateProduct(orderInfo);
         return new Result<OrderInfo>(Result.ResultStatus.SUCCESS.status, "修改成功");

@@ -1,7 +1,6 @@
 package com.zsn.modules.account.controller;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountController {
 
 
-    @ApiOperation("登录跳转")
-    @ApiImplicitParam("没有参数")
+
     @GetMapping(value = "login")
     public String login() {
         return "login";

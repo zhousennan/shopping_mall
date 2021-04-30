@@ -34,7 +34,6 @@ public class FrontController {
 
     @GetMapping(value = "toItem/{id}")
     public String toItem(@PathVariable int id, ModelMap modelMap) {
-
         modelMap.addAttribute("productId", id);
         return "frontPage/item/item_show";
     }

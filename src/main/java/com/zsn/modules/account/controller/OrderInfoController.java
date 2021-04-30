@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping(value = "api")
 public class OrderInfoController {
     @Autowired
-    OrderInfoService orderInfoService;
+   private OrderInfoService orderInfoService;
 
     /*
      * 127.0.0.1:8080/api/OrderInfos  Post
