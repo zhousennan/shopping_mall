@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/frontStatic/favicon.ico">
@@ -26,11 +26,10 @@
             <a href="temp_article/udai_article4.html">帮助中心</a>
         </div>
         <div class="pull-right">
-            <a href="login.html"><span class="cr">登录</span></a>
-            <a href="login.html?p=register">注册</a>
+            <a href="/front/toFrontLogin"><span class="cr">登录</span></a>
+            <a href="/front/toFrontLogin?p=register">注册</a>
             <a href="udai_welcome.html">我的U袋</a>
             <a href="udai_order.html">我的订单</a>
-            <a href="udai_integral.html">积分平台</a>
         </div>
     </div>
 </div>
@@ -42,7 +41,8 @@
 <div class="bgf5 clearfix">
     <div class="top-user">
         <div class="inner">
-            <a class="logo" href="index.html"><img src="/frontStatic/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+            <a class="logo" href="/front/index"><img src="/frontStatic/images/icons/logo.jpg" alt="U袋网"
+                                                     class="cover"></a>
             <div class="title">购物车</div>
         </div>
     </div>
@@ -52,7 +52,7 @@
         <div class="user-content__box clearfix bgf">
             <div class="title">购物车</div>
             <form action="udai_shopcart_pay.html" class="shopcart-form__box">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="sourceTale">
                     <thead>
                     <tr>
                         <th width="150">
@@ -61,114 +61,140 @@
                         <th width="300">商品信息</th>
                         <th width="150">单价</th>
                         <th width="200">数量</th>
-                        <th width="200">现价</th>
+                        <th hidden width="200">产品id</th>
+
                         <th width="80">操作</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">
-                            <label class="checked-label"><input type="checkbox"><i></i>
-                                <div class="img"><img src="/frontStatic/images/temp/M-003.jpg" alt="" class="cover"></div>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="name ep3">锦瑟 原创传统日常汉服男绣花交领衣裳cp情侣装春夏款</div>
-                            <div class="type c9">颜色分类：深棕色  尺码：均码</div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td>
-                            <div class="cart-num__box">
-                                <input type="button" class="sub" value="-">
-                                <input type="text" class="val" value="1" maxlength="2">
-                                <input type="button" class="add" value="+">
-                            </div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td><a href="">删除</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="checked-label"><input type="checkbox"><i></i>
-                                <div class="img"><img src="/frontStatic/images/temp/S-005.jpg" alt="" class="cover"></div>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="name ep3">霜天月明 原创传统日常汉服男绣花交领衣裳cp春装单品</div>
-                            <div class="type c9">颜色分类：深棕色  尺码：均码</div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td>
-                            <div class="cart-num__box">
-                                <input type="button" class="sub" value="-">
-                                <input type="text" class="val" value="1" maxlength="2">
-                                <input type="button" class="add" value="+">
-                            </div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td><a href="">删除</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="checked-label"><input type="checkbox"><i></i>
-                                <div class="img"><img src="/frontStatic/images/temp/M-007.jpg" alt="" class="cover"></div>
-                            </label>
-                        </th>
-                        <td>
-                            <div class="name ep3">陇上乐 原创传统日常汉服男绣花单大氅大袖衫cp情侣春秋</div>
-                            <div class="type c9">颜色分类：深棕色  尺码：均码</div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td>
-                            <div class="cart-num__box">
-                                <input type="button" class="sub" value="-">
-                                <input type="text" class="val" value="1" maxlength="2">
-                                <input type="button" class="add" value="+">
-                            </div>
-                        </td>
-                        <td>¥20.0</td>
-                        <td><a href="">删除</a></td>
-                    </tr>
+
+                    <tbody id="tbodyCart">
+
                     </tbody>
+
+
                 </table>
                 <div class="user-form-group tags-box shopcart-submit pull-right">
-                    <button type="submit" class="btn">提交订单</button>
+                    <a id="commitOrder" class="btn">提交订单</a>
                 </div>
+
                 <div class="checkbox shopcart-total">
                     <label><input type="checkbox" class="check-all"><i></i> 全选</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">删除</a>
-                    <div class="pull-right">
-                        已选商品 <span>2</span> 件
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计（不含运费）
-                        <b class="cr">¥<span class="fz24">40.00</span></b>
-                    </div>
+
                 </div>
                 <script>
-                    $(document).ready(function(){
+                    $(document).ready(function () {
+                        shoppingCart();
+                        $("#commitOrder").bind('click', function () {
+                            commitOrder()
+                        });
+                    });
+                    function commitOrder() {
+                        var orderlist = new Array();
+                        var orderInfo = {};
+                        var checkLength = $("input:checkbox[name='ckb']:checked").length;
+                        if (checkLength == 0) {
+                            alert("请至少选择一个商品！");
+                            return;
+                        }
+                        $("input[type='checkbox']").each(function () { //遍历checkbox的选择状态
+                            if ($(this).prop("checked")) { //如果值为checked表明选中了
+                                orderInfo.imageMain = $(this).closest('tr').find('td').eq(0).find('img').attr('src');
+                                orderInfo.productName = $(this).closest('tr').find('td').eq(1).find('.ep3').text();
+                                //价格
+                                orderInfo.productPrice = $(this).closest('tr').find('td').eq(2).text();
+                                //个数
+                                orderInfo.orderNumber = $(this).closest('tr').find('td').eq(3).find('input').eq(1).val();
+                                orderInfo.orderProductId = $(this).closest('tr').find('td').eq(4).text();
+                                
+                            }
+                        });
+
+
+
+                    }
+
+                    function shoppingCart(){
+                        $.ajax({
+                            url: "shoppingCart/selectAll",
+                            type: "get",
+                            success: function (data) {
+                               var  html1 ="";
+                                for (var i = 0; i < data.length; i++) {
+                                    html1 +="<tr>\n" +
+                                        "                        <td scope=\"row\">\n" +
+                                        "                            <label class=\"checked-label\"><input name='ckb' type=\"checkbox\"><i></i>\n" +
+                                        "                                <div class=\"img\"><img name=\"image\"  src=\""+data[i].productMainImage+"\" alt=\"\"\n" +
+                                        "                                                      class=\"cover\"></div>\n" +
+                                        "                            </label>\n" +
+                                        "                        </td>\n" +
+                                        "                        <td>\n" +
+                                        "                            <div class=\"name ep3\">" + data[i].productName + "</div>\n" +
+                                        "                        </td>\n" +
+                                        "                        <td>" + data[i].productPrice + "</td>\n" +
+                                        "                        <td>\n" +
+                                        "                            <div class=\"cart-num__box\">\n" +
+                                        "                                <input type=\"button\" class=\"sub\" value=\"-\">\n" +
+                                        "                                <input type=\"text\" class=\"val\" value=\"" + data[i].productNumber + "\" maxlength=\"2\">\n" +
+                                        "                                <input type=\"button\" class=\"add\" value=\"+\">\n" +
+                                        "                            </div>\n" +
+                                        "                        </td>\n" +
+                                        "                        <td hidden>" + data[i].productId + "</td>\n" +
+                                        "\t\t\t\t\t\t\n" +
+                                        "                        <td><a onclick=\"deleteOneShoppingCartRecord("+data[i].userName+","+data[i].productId +")\" >删除</a></td>\n" +
+                                        "                    </tr>"
+                                }
+                                $("#tbodyCart").append(html1);
+                            },
+                            error: function (data) {
+                                alert("出错了")
+                            }
+                        })
+                    }
+
+                    function deleteOneShoppingCartRecord(userName, productId) {
+                        $.ajax({
+                            url: "shoppingCart/deleted/"+userName+"/"+productId,
+                            type: "delete",
+
+                            success: function (data) {
+                                alert(data.massage);
+                                shoppingCart();
+                            },
+                            error: function (data) {
+                                layer.msg(data.massage, {icon: 0});
+                            }
+                        })
+                    }
+
+
+                    $(document).ready(function () {
                         var $item_checkboxs = $('.shopcart-form__box tbody input[type="checkbox"]'),
                             $check_all = $('.check-all');
                         // 全选
-                        $check_all.on('change', function() {
+                        $check_all.on('change', function () {
                             $check_all.prop('checked', $(this).prop('checked'));
                             $item_checkboxs.prop('checked', $(this).prop('checked'));
                         });
                         // 点击选择
-                        $item_checkboxs.on('change', function() {
+                        $item_checkboxs.on('change', function () {
                             var flag = true;
-                            $item_checkboxs.each(function() {
-                                if (!$(this).prop('checked')) { flag = false }
+                            $item_checkboxs.each(function () {
+                                if (!$(this).prop('checked')) {
+                                    flag = false
+                                }
                             });
                             $check_all.prop('checked', flag);
                         });
                         // 个数限制输入数字
                         $('input.val').onlyReg({reg: /[^0-9.]/g});
                         // 加减个数
-                        $('.cart-num__box').on('click', '.sub,.add', function() {
+                        $('.cart-num__box').on('click', '.sub,.add', function () {
                             var value = parseInt($(this).siblings('.val').val());
                             if ($(this).hasClass('add')) {
-                                $(this).siblings('.val').val(Math.min((value += 1),99));
+                                $(this).siblings('.val').val(Math.min((value += 1), 99));
                             } else {
-                                $(this).siblings('.val').val(Math.max((value -= 1),1));
+                                $(this).siblings('.val').val(Math.max((value -= 1), 1));
                             }
                         });
                     });
@@ -216,7 +242,9 @@
         </li>
     </ul>
     <script>
-        $(document).ready(function(){ $('.to-top').toTop({position:false}) });
+        $(document).ready(function () {
+            $('.to-top').toTop({position: false})
+        });
     </script>
 </div>
 
