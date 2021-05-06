@@ -62,7 +62,6 @@
                         <th width="150">单价</th>
                         <th width="200">数量</th>
                         <th hidden width="200">产品id</th>
-
                         <th width="80">操作</th>
                     </tr>
                     </thead>
@@ -99,6 +98,7 @@
                         }
                         $("input[type='checkbox']").each(function () { //遍历checkbox的选择状态
                             if ($(this).prop("checked")) { //如果值为checked表明选中了
+                                console.log($(this));
                                 orderInfo.imageMain = $(this).closest('tr').find('td').eq(0).find('img').attr('src');
                                 orderInfo.productName = $(this).closest('tr').find('td').eq(1).find('.ep3').text();
                                 //价格
@@ -106,9 +106,29 @@
                                 //个数
                                 orderInfo.orderNumber = $(this).closest('tr').find('td').eq(3).find('input').eq(1).val();
                                 orderInfo.orderProductId = $(this).closest('tr').find('td').eq(4).text();
-                                
+                               var obj2 = {};
+                               $.extend(true,obj2,orderInfo);
+                               orderlist.push(obj2);
                             }
+
                         });
+
+                        for (var i = 0; i < orderlist.length; i++) {
+                            console.log(orderlist[i]);
+                        }
+                        $.ajax({
+                            url:"shopping/commitOrders",
+                            type:"post",
+                            contentType: "application/json",
+                            data : JSON.stringify(orderlist),
+                            success: function (data){
+
+                            },
+                            error: function (data){
+
+                            }
+
+                        })
 
 
 

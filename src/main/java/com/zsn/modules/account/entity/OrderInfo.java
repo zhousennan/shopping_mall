@@ -264,4 +264,31 @@ public class OrderInfo implements Serializable {
         this.userPhone = userPhone;
     }
 
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "orderId=" + orderId +
+                ", productName='" + productName + '\'' +
+                ", productTotalPrice=" + productTotalPrice +
+                ", expressDeliveryCompany='" + expressDeliveryCompany + '\'' +
+                ", address='" + address + '\'' +
+                ", userName='" + userName + '\'' +
+                ", orderPaymentStatus='" + orderPaymentStatus + '\'' +
+                ", tradingTime=" + tradingTime +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderProductId=" + orderProductId +
+                ", orderDeliverGoodsStatus=" + orderDeliverGoodsStatus +
+                ", userPhone='" + userPhone + '\'' +
+                ", consignee='" + consignee + '\'' +
+                ", deletedStatus='" + deletedStatus + '\'' +
+                ", imageMain='" + imageMain + '\'' +
+                ", courierNumber='" + courierNumber + '\'' +
+                ", refundStatus=" + refundStatus +
+                ", days='" + days + '\'' +
+                ", count='" + count + '\'' +
+                ", countPays='" + countPays + '\'' +
+                ", countNoPays='" + countNoPays + '\'' +
+                '}';
+    }
 }

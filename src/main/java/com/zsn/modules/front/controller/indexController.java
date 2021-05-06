@@ -3,6 +3,7 @@ package com.zsn.modules.front.controller;
 import com.zsn.commons.entity.Result;
 import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
+import com.zsn.modules.front.entity.IndexInfo;
 import com.zsn.modules.front.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -59,6 +60,11 @@ public class indexController {
     @PutMapping(value = "payOrder/{payMoney}")
     public Result<Object> payOrder(@PathVariable int payMoney) {
         return frontService.payOrder(payMoney);
+    }
+
+    @GetMapping(value = "getIndexInfo")
+    public IndexInfo getIndexInfo(){
+        return frontService.getIndexInfo();
     }
 
 }

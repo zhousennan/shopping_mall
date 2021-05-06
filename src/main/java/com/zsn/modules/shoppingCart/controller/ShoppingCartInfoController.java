@@ -3,6 +3,7 @@ package com.zsn.modules.shoppingCart.controller;
 import com.github.pagehelper.PageInfo;
 import com.zsn.commons.entity.Result;
 
+import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.shoppingCart.entities.ShoppingCartInfo;
 import com.zsn.modules.shoppingCart.service.Impl.ShoppingCartInfoServiceImpl;
 
@@ -36,9 +37,17 @@ public class ShoppingCartInfoController {
 
     @GetMapping(value = "shoppingCart/selectAll")
     public List<ShoppingCartInfo> selectAll(String userName) {
-
         return shoppingCartInfoService.selectAll(userName);
     }
+
+    @PostMapping(value = "shopping/commitOrders",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Object> commitOrders(@RequestBody List<OrderInfo> orderList){
+        for (OrderInfo o:orderList) {
+            System.out.println(o);
+        }
+        return null;
+    }
+
 
 
 }

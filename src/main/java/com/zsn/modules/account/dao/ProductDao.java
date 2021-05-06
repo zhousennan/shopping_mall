@@ -49,4 +49,7 @@ public interface ProductDao {
 
     @Select("select * from product where product_Id=#{productId}")
     Product getProductByProductId(int productId);
+
+    @Select("select count(*) from product")
+    int getAllProducts();
 }

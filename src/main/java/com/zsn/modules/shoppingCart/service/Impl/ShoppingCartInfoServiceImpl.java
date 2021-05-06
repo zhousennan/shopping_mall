@@ -4,8 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zsn.commons.entity.Result;
 import com.zsn.commons.entity.SearchVo;
+import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
 import com.zsn.modules.account.entity.UserInfo;
+import com.zsn.modules.front.service.FrontService;
 import com.zsn.modules.shoppingCart.entities.ShoppingCartInfo;
 import com.zsn.modules.shoppingCart.mapper.ShoppingCartInfoMapper;
 import com.zsn.modules.shoppingCart.service.ShoppingCartInfoService;
@@ -25,6 +27,8 @@ public class ShoppingCartInfoServiceImpl implements ShoppingCartInfoService {
     @Resource
      ShoppingCartInfoMapper shoppingCartInfoMapper;
     private String userName =null;
+    @Autowired
+    private FrontService frontService;
 
     @Override
     public Result<ShoppingCartInfo> insert(ShoppingCartInfo shoppingCartInfo) {
@@ -89,6 +93,18 @@ public class ShoppingCartInfoServiceImpl implements ShoppingCartInfoService {
         return shoppingCartInfoMapper.selectAll();
     }
     return null;
+    }
+
+    @Override
+    public Result<Object> commitOrders(List<OrderInfo> orderList) {
+        if (orderList.isEmpty()){
+            return new Result<>(Result.ResultStatus.FAILD.status,"出错了");
+        }
+        //调用立即下单的接口
+        for (OrderInfo orderInfo: orderList) {
+            frontService.insertOrderInfo(orderInfo);
+        }
+        return new Result<>(Result.ResultStatus.SUCCESS.status,"下单成功");
     }
 
 

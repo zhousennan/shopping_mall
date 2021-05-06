@@ -3,6 +3,7 @@ package com.zsn.modules.shoppingCart.service;
 import com.github.pagehelper.PageInfo;
 import com.zsn.commons.entity.Result;
 import com.zsn.commons.entity.SearchVo;
+import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
 import com.zsn.modules.shoppingCart.entities.ShoppingCartInfo;
 
@@ -16,4 +17,6 @@ public interface ShoppingCartInfoService {
    public Result<Object> deleted (String userName, int productId);
 
    public List<ShoppingCartInfo> selectAll(String userName);
+
+   public Result<Object> commitOrders(List<OrderInfo> orderList);
 }

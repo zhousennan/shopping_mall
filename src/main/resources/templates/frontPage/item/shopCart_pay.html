@@ -14,6 +14,7 @@
     <script src="/frontStatic/js/swiper.min.js" charset="UTF-8"></script>
     <script src="/frontStatic/js/global.js" charset="UTF-8"></script>
     <script src="/frontStatic/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
+    <script src="/assets/layer/layer.js" charset="UTF-8"></script>
     <title>U袋网</title>
 </head>
 <body>
@@ -54,7 +55,6 @@
                         $(document).ready(function () {
                             initAddress();
                         });
-
                         function initAddress(){
                             $.ajax({
                                 url: "/api/address",
@@ -75,12 +75,7 @@
                                 }
                             })
                         }
-
-
                     </script>
-
-
-
                 </div>
                 <div class="add_addr"><a href="/front/addressEdit">添加新地址</a></div>
                 <div class="shop-title">确认订单</div>
@@ -92,7 +87,6 @@
                             <th width="300">商品信息</th>
                             <th width="150">单价</th>
                             <th width="200">数量</th>
-                            <th width="200">运费</th>
                             <th width="80">总价</th>
                         </tr>
                         </thead>
@@ -112,19 +106,24 @@
                                 success:function (data) {
                                     var  html="";
                                     var sumPrice=0;
+                                    var sumPriceArray = new Array();
                                     for (var i = 0; i <data.length ; i++) {
                                         html += "<tr>\n" +
                                             "                            <th scope=\"row\"><a href=\"item_show.html\"><div class=\"img\"><img src=\""+data[i].imageMain+"\" alt=\"\" class=\"cover\"></div></a></th>\n" +
                                             "                            <td>\n" +
                                             "                                <div class=\"name ep3\">"+data[i].productName+"</div>\n" +
-                                            "                                <div class=\"type c9\">颜色分类：深棕色  尺码：均码</div>\n" +
+                                            "                                <div class=\"type c9\"></div>\n" +
                                             "                            </td>\n" +
                                             "                            <td>"+data[i].productTotalPrice+"</td>\n" +
                                             "                            <td>"+data[i].orderNumber+"</td>\n" +
-                                            "                            <td>¥0.0</td>\n" +
+                                            "                            " +
                                             "                            <td>"+data[i].productTotalPrice*data[i].orderNumber+"</td>\n" +
                                             "                        </tr>"
+                                        //sumPriceArray.push(data[i].productTotalPrice*data[i].orderNumber);
                                         sumPrice +=data[i].productTotalPrice*data[i].orderNumber;
+                                       //  for (var j = 0; j < sumPriceArray.length; j++) {
+                                       //      sumPrice +=sumPrice;
+                                       //  }
                                         var time=data[i].tradingTime;
                                         var orderId=data[i].orderId;
                                     }
@@ -165,7 +164,7 @@
 <!--                            <input name="pay-mode" value="1" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>-->
 <!--                            <span class="fz16">余额支付</span><span class="fz14">（可用余额：¥88.0）</span>-->
                         </label>
-                        <div class="pay-value">支付<b class="fz16 cr" id="sumPrice">18.00</b>元</div>
+                        <div class="pay-value">支付<b class="fz16 cr" id="sumPrice"></b>元</div>
                     </div>
                     <script>
                         function initCount() {
@@ -183,7 +182,6 @@
                                 }
                             });
                         }
-
                     </script>
                     <div class="radio-line radio-box">
                         <label class="radio-label ep">
@@ -212,6 +210,8 @@
 
                     function pay() {
                         var payMoney=$("#sumPrice").text();
+                        var orderlist = new Array();
+
                         $.ajax({
                             url: "/api/payOrder/"+payMoney,
                             type: "put",

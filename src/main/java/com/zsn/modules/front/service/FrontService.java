@@ -4,6 +4,7 @@ package com.zsn.modules.front.service;
 import com.zsn.commons.entity.Result;
 import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
+import com.zsn.modules.front.entity.IndexInfo;
 
 import java.util.List;
 
@@ -26,4 +27,6 @@ public interface FrontService {
     int getUserInfoAccountByUserName();
 
     Result<Object> payOrder(int payMoney);
+
+    public IndexInfo getIndexInfo();
 }

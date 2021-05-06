@@ -51,4 +51,7 @@ public interface BrandDao {
 
     @Select("select * from brand ")
     List<Brand> getBrands();
+
+    @Select("select count(*) from brand")
+    int getAllBrand();
 }

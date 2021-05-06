@@ -1,15 +1,19 @@
 package com.zsn.modules.front.service.Impl;
 
 import com.zsn.commons.entity.Result;
+import com.zsn.modules.account.dao.BrandDao;
+import com.zsn.modules.account.dao.ProductDao;
 import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
 import com.zsn.modules.account.entity.UserInfo;
 import com.zsn.modules.front.dao.FrontDao;
+import com.zsn.modules.front.entity.IndexInfo;
 import com.zsn.modules.front.service.FrontService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -20,7 +24,12 @@ import java.util.Optional;
 @Service
 public class FrontServiceImpl implements FrontService {
     @Autowired
-  private   FrontDao frontDao;
+    private FrontDao frontDao;
+
+    @Autowired
+    private ProductDao productDao;
+    @Autowired
+    private BrandDao brandDao;
 
 
     @Override
@@ -79,6 +88,7 @@ public class FrontServiceImpl implements FrontService {
 
 
     @Override
+    @Transactional
     public Result<Object> payOrder(int payMoney) {
         //1 改变用户的钱   2改变库存 3改变订单状态
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
@@ -89,5 +99,13 @@ public class FrontServiceImpl implements FrontService {
             frontDao.updateOrderStatuePay(user.getUserName());
             return new Result<>(Result.ResultStatus.SUCCESS.status, "支付成功");
         }
+    }
+
+    @Override
+    public IndexInfo getIndexInfo() {
+        IndexInfo indexInfo = new IndexInfo();
+        indexInfo.setProductSum(productDao.getAllProducts());
+        indexInfo.setBrandSum(brandDao.getAllBrand());
+        return indexInfo;
     }
 }

@@ -36,7 +36,7 @@
                             <div class="carousel Module_info">
                                 <div class="left_img bg_color_gray padding10">
                                     <h3 class="title">商品总数</h3>
-                                    <span class="munsz">999</span>
+                                    <span class="munsz" id="productNumber">999</span>
                                 </div>
                                 <div class="right_info bg-bule"></div>
                             </div>
@@ -49,13 +49,15 @@
                             <div class="carousel Module_info">
                                 <div class="left_img bg_color_gray padding10">
                                     <h3 class="title">商品品牌</h3>
-                                    <span class="munsz">99</span>
+                                    <span class="munsz" id="brandNumber">99</span>
                                 </div>
                                 <div class="right_info bg-gray"></div>
                             </div>
                         </a>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -83,9 +85,9 @@
                             <div class="right_shop">
                                 <p> 店铺动态评分：</p>
                                 <ul>
-                                    <li><label class="name">相符描述</label><span class="score">4.5分</span></li>
-                                    <li><label class="name">服务态度</label><span class="score">4.0分</span></li>
-                                    <li><label class="name">发货速度</label><span class="score">4.6分</span></li>
+                                    <li><label class="name">相符描述</label><span class="score">5.0分</span></li>
+                                    <li><label class="name">服务态度</label><span class="score">5.0分</span></li>
+                                    <li><label class="name">发货速度</label><span class="score">5.0分</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -161,9 +163,7 @@
                                 <li>待支付 &nbsp;
                                     <a href="">(02)</a>
                                 </li>
-                                <li>待结算确认 &nbsp;
-                                    <a href="">(32)</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -193,8 +193,23 @@
 <script>
     $(document).ready(function (){
         getSystemInfo();
+        getIndexInfo();
 
     })
+    function getIndexInfo(){
+        $.ajax({
+            url:"/api/getIndexInfo",
+            type:"get",
+            success:function (data){
+                console.log(data);
+                $("#productNumber").text(data.productSum);
+                $("#brandNumber").text(data.brandSum);
+            },
+            error:function (){
+                layer.alert("加载出错了请重试", {icon: 0});
+            }
+        })
+    }
     function getSystemInfo(){
 
         $.ajax({
@@ -237,9 +252,7 @@
                     "                            <td>"+data.ip+"</td>\n" +
                     "                            <td>"+data.userName+"<span class=\"tab_prompt bg-orange\">在线</span></td>\n" +
                     "                        </tr>";
-
                 $("#tbodyNowLogin").append(html1);
-
                 $("#tbodySysteminfo").append(html);
             }
         })
