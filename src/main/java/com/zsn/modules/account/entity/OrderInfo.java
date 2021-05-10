@@ -14,7 +14,7 @@ public class OrderInfo implements Serializable {
     /**
      * 订单id
      */
-    private Integer orderId;
+    private String orderId;
     /**
      * 产品名称
      */
@@ -160,11 +160,11 @@ public class OrderInfo implements Serializable {
         this.consignee = consignee;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

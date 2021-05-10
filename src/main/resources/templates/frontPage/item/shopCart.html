@@ -33,10 +33,6 @@
         </div>
     </div>
 </div>
-<script>
-
-
-</script>
 <!-- 顶部标题 -->
 <div class="bgf5 clearfix">
     <div class="top-user">
@@ -65,12 +61,8 @@
                         <th width="80">操作</th>
                     </tr>
                     </thead>
-
                     <tbody id="tbodyCart">
-
                     </tbody>
-
-
                 </table>
                 <div class="user-form-group tags-box shopcart-submit pull-right">
                     <a id="commitOrder" class="btn">提交订单</a>
@@ -79,7 +71,6 @@
                 <div class="checkbox shopcart-total">
                     <label><input type="checkbox" class="check-all"><i></i> 全选</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">删除</a>
-
                 </div>
                 <script>
                     $(document).ready(function () {
@@ -98,7 +89,6 @@
                         }
                         $("input[type='checkbox']").each(function () { //遍历checkbox的选择状态
                             if ($(this).prop("checked")) { //如果值为checked表明选中了
-                                console.log($(this));
                                 orderInfo.imageMain = $(this).closest('tr').find('td').eq(0).find('img').attr('src');
                                 orderInfo.productName = $(this).closest('tr').find('td').eq(1).find('.ep3').text();
                                 //价格
@@ -106,32 +96,25 @@
                                 //个数
                                 orderInfo.orderNumber = $(this).closest('tr').find('td').eq(3).find('input').eq(1).val();
                                 orderInfo.orderProductId = $(this).closest('tr').find('td').eq(4).text();
+                                orderInfo.productTotalPrice=orderInfo.productPrice*orderInfo.orderNumber;
                                var obj2 = {};
                                $.extend(true,obj2,orderInfo);
                                orderlist.push(obj2);
                             }
-
                         });
 
-                        for (var i = 0; i < orderlist.length; i++) {
-                            console.log(orderlist[i]);
-                        }
+
                         $.ajax({
                             url:"shopping/commitOrders",
                             type:"post",
                             contentType: "application/json",
                             data : JSON.stringify(orderlist),
                             success: function (data){
-
+                                window.location.href = "/front/shopCartPay";
                             },
                             error: function (data){
-
                             }
-
                         })
-
-
-
                     }
 
                     function shoppingCart(){
@@ -167,7 +150,7 @@
                                 $("#tbodyCart").append(html1);
                             },
                             error: function (data) {
-                                alert("出错了")
+                                alert("出错了,请登录后重试");
                             }
                         })
                     }
@@ -179,7 +162,7 @@
 
                             success: function (data) {
                                 alert(data.massage);
-                                shoppingCart();
+                                location.reload();
                             },
                             error: function (data) {
                                 layer.msg(data.massage, {icon: 0});

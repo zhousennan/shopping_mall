@@ -100,8 +100,10 @@ public class ShoppingCartInfoServiceImpl implements ShoppingCartInfoService {
         if (orderList.isEmpty()){
             return new Result<>(Result.ResultStatus.FAILD.status,"出错了");
         }
+        UserInfo userInfo = (UserInfo)SecurityUtils.getSubject().getPrincipal();
         //调用立即下单的接口
         for (OrderInfo orderInfo: orderList) {
+            deleted(userInfo.getUserName(),orderInfo.getOrderProductId());
             frontService.insertOrderInfo(orderInfo);
         }
         return new Result<>(Result.ResultStatus.SUCCESS.status,"下单成功");

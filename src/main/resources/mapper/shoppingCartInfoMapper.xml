@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.zsn.modules.shoppingCart.mapper.ShoppingCartInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.zsn.modules.shoppingCart.entities.ShoppingCartInfo">
+        <id column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="product_number" property="productNumber" jdbcType="INTEGER"/>
+        <result column="product_total_price" property="productTotalPrice" jdbcType="FLOAT"/>
+        <result column="product_main_image" property="productMainImage" jdbcType="VARCHAR"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="product_price" property="productPrice" jdbcType="FLOAT"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from  shopping_cart_info
+    </select>
+
+    <insert id="insert" parameterType="com.zsn.modules.shoppingCart.entities.ShoppingCartInfo">
+     insert into  shopping_cart_info  (user_name,product_name,product_number,product_total_price,product_main_image
+     ,product_id,product_price)value (#{userName},#{productName}
+     ,#{productNumber},#{productTotalPrice},#{productMainImage},#{productId},#{productPrice})
+    </insert>
+
+    <update id="update">
+     update  shopping_cart_info set product_number=#{productNumber}
+     ,product_total_price=#{productTotalPrice} where
+      product_id=#{productId} and user_name=#{userName}
+   </update>
+
+    <delete id="deleted" >
+   delete from shopping_cart_info where product_id=#{productId} and user_name=#{userName}
+    </delete>
+
+
+</mapper>
+
+
+

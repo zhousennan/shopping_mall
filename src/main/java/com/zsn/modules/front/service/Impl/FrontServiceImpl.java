@@ -9,6 +9,7 @@ import com.zsn.modules.account.entity.UserInfo;
 import com.zsn.modules.front.dao.FrontDao;
 import com.zsn.modules.front.entity.IndexInfo;
 import com.zsn.modules.front.service.FrontService;
+import com.zsn.utils.OrderIdUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,15 @@ public class FrontServiceImpl implements FrontService {
     public List<Product> childProductList() {
         return Optional.ofNullable(frontDao.childProductList()).orElse(Collections.emptyList());
     }
-
     @Override
     public Product getProductById(int id) {
         return frontDao.getProductById(id);
     }
-
     @Override
     public Result<OrderInfo> insertOrderInfo(OrderInfo orderInfo) {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+        String orderID=OrderIdUtil.getOrderId();
+
         orderInfo.setUserName(user.getUserName());
         //未支付
         orderInfo.setOrderPaymentStatus("0");
@@ -70,6 +71,8 @@ public class FrontServiceImpl implements FrontService {
         orderInfo.setDeletedStatus("1");
         orderInfo.setOrderStatus(1);
         orderInfo.setOrderDeliverGoodsStatus(0);
+        //生成订单id
+        orderInfo.setOrderId(orderID);
         frontDao.insertOrderInfo(orderInfo);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "立即购买");
     }

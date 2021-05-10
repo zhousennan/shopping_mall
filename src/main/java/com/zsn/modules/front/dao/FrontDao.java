@@ -31,8 +31,8 @@ public interface FrontDao {
     @Select("select * from product where product_id=#{id}")
     Product getProductById(int id);
 
-    @Insert("insert into order_info   (product_name,product_total_price,order_number,order_product_id,user_name,order_payment_status,trading_time,image_main,express_delivery_company,deleted_status,order_deliver_goods_status,order_status) values " +
-            "(#{productName},#{productTotalPrice},#{orderNumber},#{orderProductId},#{userName},#{orderPaymentStatus},#{tradingTime},#{imageMain},#{expressDeliveryCompany},#{deletedStatus},#{orderDeliverGoodsStatus},#{orderStatus})")
+    @Insert("insert into order_info   (product_name,product_total_price,order_number,order_product_id,user_name,order_payment_status,trading_time,image_main,express_delivery_company,deleted_status,order_deliver_goods_status,order_status,order_id) values " +
+            "(#{productName},#{productTotalPrice},#{orderNumber},#{orderProductId},#{userName},#{orderPaymentStatus},#{tradingTime},#{imageMain},#{expressDeliveryCompany},#{deletedStatus},#{orderDeliverGoodsStatus},#{orderStatus},#{orderId})")
     void insertOrderInfo(OrderInfo orderInfo);
 
     @Select("select * from order_info where order_payment_status='0' and user_name=#{userName} ")

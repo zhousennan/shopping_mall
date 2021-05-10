@@ -27,7 +27,7 @@
             <a href="temp_article/udai_article4.html">帮助中心</a>
         </div>
         <div class="pull-right">
-            <a href="login.html"><span class="cr">登录</span></a>
+            <a href="/front/toFrontLogin"><span class="cr">登录</span></a>
             <a href="login.html?p=register">注册</a>
             <a href="udai_welcome.html">我的U袋</a>
             <a href="udai_order.html">我的订单</a>
@@ -106,7 +106,7 @@
                                 success:function (data) {
                                     var  html="";
                                     var sumPrice=0;
-                                    var sumPriceArray = new Array();
+                                   // var sumPriceArray = new Array();
                                     for (var i = 0; i <data.length ; i++) {
                                         html += "<tr>\n" +
                                             "                            <th scope=\"row\"><a href=\"item_show.html\"><div class=\"img\"><img src=\""+data[i].imageMain+"\" alt=\"\" class=\"cover\"></div></a></th>\n" +
@@ -120,15 +120,18 @@
                                             "                            <td>"+data[i].productTotalPrice*data[i].orderNumber+"</td>\n" +
                                             "                        </tr>"
                                         //sumPriceArray.push(data[i].productTotalPrice*data[i].orderNumber);
-                                        sumPrice +=data[i].productTotalPrice*data[i].orderNumber;
+                                        sumPrice +=data[i].productTotalPrice;
                                        //  for (var j = 0; j < sumPriceArray.length; j++) {
                                        //      sumPrice +=sumPrice;
                                        //  }
                                         var time=data[i].tradingTime;
                                         var orderId=data[i].orderId;
                                     }
+                                    console.log(sumPrice);
                                     $("#tbody").append(html);
                                     $("#sumPrice").text(sumPrice);
+                                    $("#zfb").text(sumPrice);
+                                    $("#wx").text(sumPrice);
                                     $("#time").text(time);
                                     $("#orderId").text(orderId);
                                 },
@@ -188,14 +191,14 @@
                             <input name="pay-mode" value="2" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
                             <img src="/frontStatic/images/icons/alipay.png" alt="支付宝支付">
                         </label>
-                        <div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
+                        <div class="pay-value">支付<b class="fz16 cr" id="zfb"></b>元</div>
                     </div>
                     <div class="radio-line radio-box">
                         <label class="radio-label ep">
                             <input name="pay-mode" value="3" autocomplete="off" type="radio"><i class="iconfont icon-radio"></i>
                             <img src="/frontStatic/images/icons/paywechat.png" alt="微信支付">
                         </label>
-                        <div class="pay-value">支付<b class="fz16 cr">18.00</b>元</div>
+                        <div class="pay-value">支付<b class="fz16 cr" id="wx"></b>元</div>
                     </div>
                 </div>
                 <div class="user-form-group shopcart-submit">

@@ -42,10 +42,8 @@ public class ShoppingCartInfoController {
 
     @PostMapping(value = "shopping/commitOrders",consumes = MediaType.APPLICATION_JSON_VALUE)
     public Result<Object> commitOrders(@RequestBody List<OrderInfo> orderList){
-        for (OrderInfo o:orderList) {
-            System.out.println(o);
-        }
-        return null;
+
+        return shoppingCartInfoService.commitOrders(orderList);
     }
 
 
