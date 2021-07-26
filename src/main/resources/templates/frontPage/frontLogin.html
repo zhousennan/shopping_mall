@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <script src="/frontStatic/js/jquery.form.js" charset="UTF-8"></script>
     <script src="/frontStatic/js/global.js" charset="UTF-8"></script>
     <script src="/frontStatic/js/login.js" charset="UTF-8"></script>
-    <title>U袋网 - 登录 / 注册</title>
+    <title>古风家 - 登录 / 注册</title>
 </head>
 <body>
 <div class="public-head-layout container">
@@ -23,7 +23,7 @@
     <div class="login-layout container">
         <div class="form-box login">
             <div class="tabs-nav">
-                <h2>欢迎登录U袋网平台</h2>
+                <h2>欢迎登录古风家</h2>
             </div>
             <div class="tabs_container">
                 <form class="tabs_form" action="" method="post" id="login_form">
@@ -284,19 +284,7 @@
         </script>
     </div>
 </div>
-<div class="footer-login container clearfix">
-    <ul class="links">
-        <a href=""><li>网店代销</li></a>
-        <a href=""><li>U袋学堂</li></a>
-        <a href=""><li>联系我们</li></a>
-        <a href=""><li>企业简介</li></a>
-        <a href=""><li>新手上路</li></a>
-    </ul>
-    <!-- 版权 -->
-    <p class="copyright">
-        © 2005-2017 U袋网 版权所有，并保留所有权利<br>
-        ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
-    </p>
-</div>
+<!-- 底部信息 -->
+<div th:replace="frontPage/fragments/footer"></div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -56,8 +56,8 @@
         </table>
     </div>
 </div>
-<div th:replace="/account/order/editOrder"></div>
-<div th:replace="/account/order/courierNumberEdit"></div>
+<div th:replace="account/order/editOrder"></div>
+<div th:replace="account/order/courierNumberEdit"></div>
 </body>
 </html>
 <script type="text/javascript">
@@ -69,6 +69,9 @@
     //绑定保存方法
     $("#courierNumberBtn").bind("click", function() {
         saveCourierNumberEdit();
+    });
+    $("#editOrderInfoBtn").bind("click", function() {
+        saveEditOrder();
     });
 
     //设置框架
@@ -164,7 +167,7 @@
                 {data: 'orderPaymentStatus', name: "order_payment_status", sortable: true},
                 {data: 'orderDeliverGoodsStatus', name: "order_deliver_goods_status", sortable: true},
                 {data: 'orderStatus', name: "order_status", sortable: true},
-                {data: 'operate', width: '80px', sortable: false}
+                {data: 'operate', width: '140px', sortable: false}
             ]
         });
     }
@@ -201,13 +204,14 @@
             return "<a href='javascript:void(0);'  data-toggle='modal' data-target='#courierNumberEdit' " +
                 "onclick='initDeliverGoods(\"" + orderId + "\")'>发货</a>&nbsp;" +
                 "<a href='javascript:void(0);'data-toggle='modal' data-target='#editOrder' onclick='initEditOrder(\"" + orderId + "\")' class='btn_editcolor'>修改</a>&nbsp;"+
-                "<a href='javascript:void(0);' onclick='deleteProduct(\"" + orderId + "\")' class='btn_editcolor'>退款</a>"+
+                ""+
                 "<a href='javascript:void(0);' onclick='deleteOrderInfo(\"" + orderId + "\")' class='btn_editcolor'>删除</a>";
         }
     }
     function initDeliverGoods(orderId) {
+
         $.ajax({
-            url : "/api/orderInfo/" + orderId,
+            url : "/api/orderInfoById/" + orderId,
             type : "get",
             success : function (rs) {
                 $("#initDeliverGoodsId").val(rs.orderId);
@@ -235,18 +239,18 @@
                 if (rs.status == 200) {
                     initOrderTable(DEFAULT_PAGE_SIZE);
                 } else {
-                    layer.alert(rs.messgae, {icon: 0});
+                    alert("修改失败")
                 }
             },
             error : function (data) {
-                layer.alert(data.responseText, {icon: 0});
+                alert("出错了")
             }
         });
     }
 
   function initEditOrder(orderId) {
         $.ajax({
-            url : "/api/orderInfo/" + orderId,
+            url : "/api/orderInfoById/" + orderId,
             type : "get",
             success : function (rs) {
                 $("#orderEditId").val(rs.orderId);
@@ -257,12 +261,13 @@
                 $("#orderEditPhone").val(rs.userPhone);
             },
             error : function (data) {
-                layer.alert(data.massage, {icon: 0});
+               alert("出错了")
             }
         });
     }
 
    function saveEditOrder() {
+
         var orderInfo = {};
         orderInfo.orderId=$("#orderEditId").val();
        orderInfo.expressDeliveryCompany = $("#orderEditExpressDeliveryCompany").val();
@@ -278,7 +283,7 @@
                 if (rs.status == 200) {
                     initOrderTable(DEFAULT_PAGE_SIZE);
                 } else {
-                    layer.alert(rs.messgae, {icon: 0});
+                   alert("出错了");
                 }
             },
             error : function (data) {
@@ -289,14 +294,14 @@
 
     function deleteOrderInfo(orderId) {
         $.ajax({
-            url: "/api/OrderInfo/" + orderId,
+            url: "/api/deletedOrderInfoById/" + orderId,
             type: "delete",
             success: function (data) {
                 if (data.status == 200) {
                     initOrderTable(DEFAULT_PAGE_SIZE);
                 } else {
                     // window.location.href = data.object;
-                    layer.msg(data.message, {icon: 0});
+                    alert("出错了")
                 }
             },
             error: function (data) {

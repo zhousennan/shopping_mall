@@ -1,43 +1,22 @@
 <div class="tab-header">
     <div class="inner">
         <div class="pull-left">
-            <div class="pull-left">嗨，欢迎来到<span class="cr">小型商场</span></div>
-            <a href="temp_article/udai_article4.html">帮助中心</a>
+            <div class="pull-left">嗨，欢迎来到<span class="cr">古风家</span></div>
+
         </div>
         <div class="pull-right">
-            <a href="/front/toFrontLogin"><span class="cr">登录</span></a>
-            <a href="/front/toFrontLogin?p=register">注册</a>
-            <a href="udai_welcome.html">我的信息</a>
-            <a href="udai_order.html">我的订单</a>
-
+            <a shiro:notAuthenticated="" href="/front/toFrontLogin"><span class="cr">登录</span></a>
+            <a shiro:notAuthenticated="" href="/front/toFrontLogin?p=register">注册</a>
+            <a shiro:Authenticated="user" href="/front/toInfo">个人中心</a>
         </div>
     </div>
 </div>
-<!-- 搜索栏 -->
+
 <div class="top-search">
     <div class="inner">
-        <a class="logo" href="index.html"><img src="/frontStatic/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
-        <div class="search-box">
-            <form class="input-group">
-                <input placeholder="Ta们都在搜U袋网" type="text">
-                <span class="input-group-btn">
-						<button type="button">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>
-					</span>
-            </form>
-            <p class="help-block text-nowrap">
-                <a href="">连衣裙</a>
-                <a href="">裤</a>
-                <a href="">衬衫</a>
-                <a href="">T恤</a>
-                <a href="">女包</a>
-                <a href="">家居服</a>
-                <a href="">2017新款</a>
-            </p>
-        </div>
+
         <div class="cart-box">
-            <a href="/goCartPage" class="cart-but">
+            <a shiro:Authenticated="user" href="/goCartPage" class="cart-but">
                 <i class="iconfont icon-shopcart cr fz16"></i> 购物车
             </a>
         </div>
@@ -46,43 +25,16 @@
 <!--顶部导航-->
 <div class="top-nav bg3">
     <div class="nav-box inner">
-        <div class="all-cat">
-            <div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
-            <div class="cat-list__box">
-                <div class="cat-box">
-                    <div class="title">
-                        <i class="iconfont icon-skirt ce"></i> 女装
-                    </div>
-                </div>
-                <div class="cat-box">
-                    <div class="title">
-                        <i class="iconfont icon-fushi ce"></i> 男装
-                    </div>
 
-
-                </div>
-
-                <div class="cat-box">
-                    <div class="title">
-                        <i class="iconfont icon-kid ce"></i> 童装
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
         <ul class="nva-list">
             <a href="index.html"><li class="active">首页</li></a>
-            <a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-            <a href="enterprise_id.html"><li>企业账号</li></a>
-
+            <a href="/front/traditional"><li>企业简介</li></a>
 
         </ul>
         <div class="user-info__box">
             <div class="login-box">
                 <div class="avt-port">
-                    <img src="/frontStatic/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
+                    <img src="/frontStatic/images/icons/default_avt.png" alt="欢迎来到古风家" class="cover b-r50">
                 </div>
                 <!-- 已登录 -->
                 <div shiro:Authenticated="user" class="name c6">   Hi~ <span class="cr" >
@@ -94,16 +46,7 @@
                 <div shiro:notAuthenticated="" class="point c6"><a href="/front/toFrontLogin">点此登录</a>，发现更多精彩</div>
 
             </div>
-            <div class="agent-box">
-                <a href="#" class="agent">
-                    <i class="iconfont icon-fushi"></i>
-                    <p>申请网店代销</p>
-                </a>
-                <a href="javascript:;" class="agent">
-                    <i class="iconfont icon-agent"></i>
-                    <p><span class="cr">9527</span>位代销商</p>
-                </a>
-            </div>
+
 
             <div class="tags">
                 <div class="tag"><i class="iconfont icon-real fz16"></i> 品牌正品</div>

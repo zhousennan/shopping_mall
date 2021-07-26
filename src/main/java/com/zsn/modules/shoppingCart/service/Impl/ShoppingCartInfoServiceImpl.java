@@ -36,7 +36,6 @@ public class ShoppingCartInfoServiceImpl implements ShoppingCartInfoService {
         if (userInfo==null){
             new Result<ShoppingCartInfo>(Result.ResultStatus.FAILD.status,"请登录");
         }
-
         String userName = userInfo.getUserName();
         System.out.println(userName);
         System.out.println(shoppingCartInfo.getUserName());
@@ -94,7 +93,6 @@ public class ShoppingCartInfoServiceImpl implements ShoppingCartInfoService {
     }
     return null;
     }
-
     @Override
     public Result<Object> commitOrders(List<OrderInfo> orderList) {
         if (orderList.isEmpty()){

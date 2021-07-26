@@ -3,6 +3,8 @@ package com.zsn.modules.front.controller;
 import com.zsn.commons.entity.Result;
 import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
+import com.zsn.modules.account.entity.UserInfo;
+import com.zsn.modules.account.service.OrderInfoService;
 import com.zsn.modules.front.entity.IndexInfo;
 import com.zsn.modules.front.service.FrontService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import java.util.List;
 public class indexController {
     @Autowired
     FrontService frontService;
+    @Autowired
+    OrderInfoService orderInfoService;
 
     @GetMapping(value = "hotProduct")
     List<Product> hotProduct() {
@@ -63,8 +67,30 @@ public class indexController {
     }
 
     @GetMapping(value = "getIndexInfo")
-    public IndexInfo getIndexInfo(){
+    public IndexInfo getIndexInfo() {
         return frontService.getIndexInfo();
+    }
+
+    @GetMapping(value = "pay")
+    public int getPay() {
+        return frontService.pay();
+    }
+
+    @GetMapping(value = "getUserInfo")
+    public UserInfo getUserInfo(){
+        return frontService.getUserInfo();
+    }
+    @GetMapping(value = "getAllOrderInfo")
+    public List<OrderInfo> getAllOrderInfo(){
+     return    orderInfoService.getAllOrderInfo();
+    }
+    @GetMapping(value = "getOrderInfoNoPay")
+    public List<OrderInfo> getOrderInfoNoPay(){
+        return    orderInfoService.getAllOrderInfo();
+    }
+    @GetMapping(value = "getOrderInfoNofh")
+    public List<OrderInfo> getOrderInfoNofh(){
+        return    orderInfoService.getOrderInfoNofh();
     }
 
 }

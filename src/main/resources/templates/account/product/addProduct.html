@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -68,9 +68,11 @@
                 </div>
                 <div class="Add_p_s">
                     <label class="form-label col-2">产品类型：</label>
-                    <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder=""
+                    <div class="formControls col-2">
+                        <input type="text" class="input-text" value="" placeholder=""
                                                            id="productType"
-                                                           name=""></div>
+                                                           name="">
+                    </div>
                 </div>
                 <div class="Add_p_s">
                     <label class="form-label col-2">产品品牌：</label>
@@ -215,16 +217,13 @@
             contentType: "application/json",
             data: JSON.stringify(product),
             success: function (data) {
-                console.log(data);
-                if (data.status == 200) {
-                    layer.msg(data.massage, {icon: 0});
+
+                   alert("新增成功");
                     window.location.href="/account/products";
-                } else {
-                    layer.msg(data.massage, {icon: 0});
-                }
+
             },
             error: function (data) {
-                layer.msg(data.responseText, {icon: 0});
+                alert("出错了");
             }
         });
     }

@@ -6,7 +6,9 @@ import com.zsn.commons.entity.Result;
 import com.zsn.commons.entity.SearchVo;
 import com.zsn.modules.account.dao.OrderInfoDao;
 import com.zsn.modules.account.entity.OrderInfo;
+import com.zsn.modules.account.entity.UserInfo;
 import com.zsn.modules.account.service.OrderInfoService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +33,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     /*根据orderId进行删除*/
     @Override
     @Transactional
-    public Result<Object> deletedOrderInfo(int orderId) {
+    public Result<Object> deletedOrderInfo(String orderId) {
         orderInfoDao.deletedOrderInfo(orderId);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
@@ -44,7 +46,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
     /*获取订单，根据订单orderId*/
     @Override
-    public OrderInfo getOrderInfo(int orderId) {
+    public OrderInfo getOrderInfo(String orderId) {
         return orderInfoDao.getOrderInfo(orderId);
     }
     @Override
@@ -90,5 +92,26 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         list.add(orderInfoDao.getFailTotal());
         list.add(orderInfoDao.getRefundMoney());
         return list;
+    }
+
+    @Override
+    public List<OrderInfo> getAllOrderInfo() {
+        UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+
+        return orderInfoDao.getAllOrderInfo(user.getUserName());
+    }
+
+    @Override
+    public List<OrderInfo> getOrderInfoNoPay() {
+        UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+
+        return orderInfoDao.getOrderInfoNoPay(user.getUserName());
+    }
+
+    @Override
+    public List<OrderInfo> getOrderInfoNofh() {
+        UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+
+        return orderInfoDao.getOrderInfoNofh(user.getUserName());
     }
 }

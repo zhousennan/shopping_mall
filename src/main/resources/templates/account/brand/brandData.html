@@ -23,7 +23,7 @@
 <body>
 <div style="width: 1200px;height:400px ">
 <div id="main" style="width: 600px;height:400px;"></div>
-<div id="PieChart" style="width: 600px;height:400px;"></div>
+<div id="PieChart" style="width: 600px;height:400px;position: absolute ;top: 20px;right: 40px"></div>
 </div>
 </body>
 <script type="text/javascript">
@@ -67,8 +67,8 @@
                         var myChart = echarts.init(document.getElementById('PieChart'));
                         option = {
                             title: {
-                                text: '某站点用户访问来源',
-                                subtext: '纯属虚构',
+                                text: '品牌数据',
+                                subtext: '统计    ',
                                 left: 'center'
                             },
                             tooltip: {

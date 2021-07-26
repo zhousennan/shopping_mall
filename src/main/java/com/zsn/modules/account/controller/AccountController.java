@@ -11,7 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountController {
 
 
-
+/**
+ * @api {Get} /account/login 添加User的接口
+ * @apiName 登录
+ * @apiGroup login
+ * @apiDescription 登录接口
+ * @apiParam name null
+ * @apiSuccess null
+ */
     @GetMapping(value = "login")
     public String login() {
         return "login";
@@ -58,7 +65,31 @@ public class AccountController {
     public String users() {
         return "account/user/user_list";
     }
-
+/** 
+   * @api {POST} path 接口描述
+   * @apiDescription 接口描述
+   * @apiGroup AccountController 
+   * @apiHeader {String} key=desc
+   * @apiParam {type} name desc
+   *
+   * @apiParamExample {json} 请求示例:
+   * {
+   *   
+   * }
+   * @apiSuccessExample {json} 成功响应:
+   * HTTP/1.1 200 OK
+   * {
+   *   "code":"0",
+   *    "desc":"success",
+   *    "data":{
+   *       
+   *     }
+   * }
+   * @apiVersion 1.0.0
+   */ 
+    public String t(){
+        return "";
+    }
     @GetMapping(value = "addProduct")
     public String addProduct() {
         return "account/product/addProduct";

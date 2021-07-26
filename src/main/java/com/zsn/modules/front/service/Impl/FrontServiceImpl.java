@@ -3,6 +3,7 @@ package com.zsn.modules.front.service.Impl;
 import com.zsn.commons.entity.Result;
 import com.zsn.modules.account.dao.BrandDao;
 import com.zsn.modules.account.dao.ProductDao;
+import com.zsn.modules.account.dao.UserInfoDao;
 import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
 import com.zsn.modules.account.entity.UserInfo;
@@ -31,23 +32,22 @@ public class FrontServiceImpl implements FrontService {
     private ProductDao productDao;
     @Autowired
     private BrandDao brandDao;
+    @Autowired
+    private UserInfoDao userInfoDao;
 
 
     @Override
     public List<Product> hotProduct() {
         return Optional.ofNullable(frontDao.hotProduct()).orElse(Collections.emptyList());
     }
-
     @Override
     public List<Product> manProductList() {
         return Optional.ofNullable(frontDao.manProductList()).orElse(Collections.emptyList());
     }
-
     @Override
     public List<Product> womanProductList() {
         return Optional.ofNullable(frontDao.womanProductList()).orElse(Collections.emptyList());
     }
-
     @Override
     public List<Product> childProductList() {
         return Optional.ofNullable(frontDao.childProductList()).orElse(Collections.emptyList());
@@ -71,6 +71,9 @@ public class FrontServiceImpl implements FrontService {
         orderInfo.setDeletedStatus("1");
         orderInfo.setOrderStatus(1);
         orderInfo.setOrderDeliverGoodsStatus(0);
+        orderInfo.setAddress("四川省甘孜州康定市姑咱镇四川民族学院");
+        orderInfo.setConsignee("周森楠");
+        orderInfo.setUserPhone("18381719043");
         //生成订单id
         orderInfo.setOrderId(orderID);
         frontDao.insertOrderInfo(orderInfo);
@@ -111,4 +114,24 @@ public class FrontServiceImpl implements FrontService {
         indexInfo.setBrandSum(brandDao.getAllBrand());
         return indexInfo;
     }
+
+    @Override
+    public int pay() {
+        UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+        UserInfo user1 = userInfoDao.getUserByUserName(user.getUserName());
+
+        return user1.getCount();
+    }
+
+    @Override
+    public UserInfo getUserInfo() {
+        UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
+        UserInfo user1 = userInfoDao.getUserByUserName(user.getUserName());
+
+        return user1;
+    }
+
+
+
+
 }

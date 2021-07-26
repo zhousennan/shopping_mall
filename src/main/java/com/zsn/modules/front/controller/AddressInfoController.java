@@ -32,4 +32,8 @@ public class AddressInfoController {
         return addressInfoService.getAddress();
     }
 
+    @DeleteMapping(value = "deletedAddress/{id}")
+    public void deletedAddress(@PathVariable int id){
+        addressInfoService.deletedAddress(id);
+    }
 }

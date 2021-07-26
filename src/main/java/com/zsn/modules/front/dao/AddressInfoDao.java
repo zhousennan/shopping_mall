@@ -1,6 +1,7 @@
 package com.zsn.modules.front.dao;
 
 import com.zsn.modules.front.entity.AddressInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -21,4 +22,7 @@ public interface AddressInfoDao {
 
     @Select("select * from address_info where user_name=#{userName}")
     List<AddressInfo> getAddress(String userName);
+
+    @Delete("DELETE from address_info where address_id=#{id}")
+    void deletedAddress(int id);
 }

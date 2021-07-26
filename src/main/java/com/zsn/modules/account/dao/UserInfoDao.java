@@ -53,4 +53,6 @@ public interface UserInfoDao {
 
     @Delete("delete from user_role where user_id=#{userId}")
     void deletedUserRoleByUserId(int userId);
+
+
 }

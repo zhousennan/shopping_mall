@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
@@ -14,62 +14,15 @@
     <script src="/frontStatic/js/swiper.min.js" charset="UTF-8"></script>
     <script src="/frontStatic/js/global.js" charset="UTF-8"></script>
     <!-- <script src="js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script> -->
-    <title>U袋网</title>
+    <title>古风家</title>
 </head>
 <body>
 <!-- 顶部tab -->
-<div class="tab-header">
-    <div class="inner">
-        <div class="pull-left">
-            <div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
-            <a href="agent_level.html">网店代销</a>
-            <a href="temp_article/udai_article4.html">帮助中心</a>
-        </div>
-        <div class="pull-right">
-            <a href="login.html"><span class="cr">登录</span></a>
-            <a href="login.html?p=register">注册</a>
-            <a href="udai_welcome.html">我的U袋</a>
-            <a href="udai_order.html">我的订单</a>
-
-        </div>
-    </div>
-</div>
-<!-- 顶部标题 -->
-<div class="bgf5 clearfix">
-    <div class="top-user">
-        <div class="inner">
-            <a class="logo" href="index.html"><img src="/frontStatic/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
-            <div class="title">个人中心</div>
-        </div>
-    </div>
-</div>
+<div th:replace="frontPage/fragment2/head2"></div>
 <div class="content clearfix bgf5">
     <section class="user-center inner clearfix">
 
-        <div class="pull-left bgf">
-            <a href="udai_welcome.html" class="title">U袋欢迎页</a>
-            <dl class="user-center__nav">
-                <dt>帐户信息</dt>
-                <a href="udai_setting.html"><dd>个人资料</dd></a>
-                <a href="udai_treasurer.html"><dd>资金管理</dd></a>
-                <a href="udai_address.html"><dd class="active">收货地址</dd></a>
-                <a href="udai_pwd_modify.html"><dd>修改登录密码</dd></a>
-            </dl>
-
-            <dl class="user-center__nav">
-                <dt>订单中心</dt>
-                <a href="udai_order.html"><dd>我的订单</dd></a>
-                <a href="udai_refund.html"><dd>退款/退货</dd></a>
-            </dl>
-
-
-            <dl class="user-center__nav">
-                <dt>U袋网</dt>
-                <a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
-                <a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
-                <a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
-            </dl>
-        </div>
+        <div th:replace="frontPage/fragment2/sidebar"></div>
         <div class="pull-right">
             <div class="user-content__box clearfix bgf">
                 <div class="title">账户信息-编辑收货地址</div>
@@ -153,6 +106,7 @@
                     <div class="tdf1">操作</div>
                     <div class="tdf1"></div>
                 </div>
+
                 <div class="addr-list" id="listAddress">
                 </div>
             </div>
@@ -175,10 +129,10 @@
                        "                        <div class=\"tdf2 tdt-a_l\">"+data[i].address+"</div>\n" +
                        "                        <div class=\"tdf1\">"+data[i].telPhone+"</div>\n" +
                        "                        <div class=\"tdf1 order\">\n" +
-                       "                            <a >修改</a><a href=\"\">删除</a>\n" +
+                       "                           <a href='javascript:void(0);' onclick='deleteAddress(\"" + data[i].addressId + "\")'  \">删除</a>\n" +
                        "                        </div>\n" +
                        "                        <div class=\"tdf1\">\n" +
-                       "                            <a href=\"\" class=\"default\">设为默认</a>\n" +
+                       "                           \n" +
                        "                        </div>\n" +
                        "                    </div>"
                }
@@ -187,12 +141,22 @@
        })
 
    }
+    function deleteAddress(id) {
+        $.ajax({
+            url:"/api/deletedAddress/"+id,
+            type:"delete",
+            success:function (data) {
+                window.location.href = "/front/addressEdit";
+            },
+            error:function () {
+                alert("出错了")
+            }
+        })
+    }
+
 
 </script>
-<!--右侧信息-->
-<div th:replace="/frontPage/fragments/right"></div>
-
 <!-- 底部信息 -->
-<div th:replace="/frontPage/fragments/footer"></div>
+<div th:replace="frontPage/fragments/footer"></div>
 </body>
 </html>

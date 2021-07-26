@@ -32,26 +32,27 @@ public class ProductServiceImpl implements ProductService {
         return new PageInfo<Product>(Optional.ofNullable(productDao.getProductList(searchVo)).
                 orElse(Collections.emptyList()));
     }
-
-
     @Override
     @Transactional
     public Result<Object> deleteProduct(int productId) {
         productDao.deleteProduct(productId);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "删除成功");
     }
-
     @Override
     @Transactional
     public Result<Product> updateProduct(Product product) {
         productDao.updateProduct(product);
         return new Result<>(Result.ResultStatus.SUCCESS.status, "修改成功");
     }
-
+    @Override
+    @Transactional
+    public Result<Product> insertProduct(Product product) {
+        productDao.insertProduct(product);
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增成功");
+    }
     @Override
     public Product getProductByProductName(String productName) {
         return productDao.getProductByProductName(productName);
-
     }
 
     @Override
@@ -89,10 +90,5 @@ public class ProductServiceImpl implements ProductService {
                 Result.ResultStatus.SUCCESS.status, "Upload success.", relativePath);
     }
 
-    @Override
-    @Transactional
-    public Result<Product> insertProduct(Product product) {
-        productDao.insertProduct(product);
-        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增成功");
-    }
+
 }

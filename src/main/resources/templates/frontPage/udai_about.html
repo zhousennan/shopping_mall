@@ -1,0 +1,116 @@
+
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/frontStatic/favicon.ico">
+	<link rel="stylesheet" href="/frontStatic/css/iconfont.css">
+	<link rel="stylesheet" href="/frontStatic/css/global.css">
+	<link rel="stylesheet" href="/frontStatic/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/frontStatic/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/frontStatic/css/swiper.min.css">
+	<link rel="stylesheet" href="/frontStatic/css/styles.css">
+	<script src="/frontStatic/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+	<script src="/frontStatic/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script src="/frontStatic/js/swiper.min.js" charset="UTF-8"></script>
+	<script src="/frontStatic/js/global.js" charset="UTF-8"></script>
+	<script src="/frontStatic/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
+	<title>古风家</title>
+</head>
+<body>
+	<!-- 顶部tab -->
+	<div class="tab-header">
+		<div class="inner">
+			<div class="pull-left">
+				<div class="pull-left">嗨，欢迎来到<span class="cr">古风家</span></div>
+
+			</div>
+			<div class="pull-right">
+				<a shiro:notAuthenticated="" href="/front/toFrontLogin"><span class="cr">登录</span></a>
+				<a shiro:notAuthenticated="" href="/front/toFrontLogin?p=register">注册</a>
+				<a shiro:Authenticated="user" href="/front/toInfo">我的信息</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="top-search">
+		<div class="inner">
+
+			<div class="cart-box">
+				<a shiro:Authenticated="user" href="/goCartPage" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车
+				</a>
+			</div>
+		</div>
+	</div>
+	<!--顶部导航-->
+	<div class="top-nav bg3">
+		<div class="nav-box inner">
+
+			<ul class="nva-list">
+				<a href="index.html"><li class="active">首页</li></a>
+				<a href="/front/traditional"><li>企业简介</li></a>
+
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="content inner">
+		<section class="panel__div clearfix">
+			<div class="filter-value">
+				<div class="filter-title">联系我们</div>
+			</div>
+			<div class="html-code">
+				<h2>我的qq:176550927</h2>
+				<h2>我的邮箱:176550927@qq.com</h2>
+
+			</div>
+		</section>
+	</div>
+	<!-- 右侧菜单 -->
+	<div class="right-nav">
+		<ul class="r-with-gotop">
+			<li class="r-toolbar-item">
+				<a href="udai_welcome.html" class="r-item-hd">
+					<i class="iconfont icon-user" data-badge="0"></i>
+					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="udai_shopcart.html" class="r-item-hd">
+					<i class="iconfont icon-cart"></i>
+					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="udai_collection.html" class="r-item-hd">
+					<i class="iconfont icon-aixin"></i>
+					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="" class="r-item-hd">
+					<i class="iconfont icon-liaotian"></i>
+					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="issues.html" class="r-item-hd">
+					<i class="iconfont icon-liuyan"></i>
+					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item to-top">
+				<i class="iconfont icon-top"></i>
+				<div class="r-tip__box"><span class="r-tip-text">返回顶部</span></div>
+			</li>
+		</ul>
+		<script>
+			$(document).ready(function(){ $('.to-top').toTop({position:false}) });
+		</script>
+	</div>
+
+	<!-- 底部信息 -->
+	<div th:replace="frontPage/fragments/footer"></div>
+</body>
+</html>

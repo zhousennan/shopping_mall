@@ -41,4 +41,9 @@ public class AddressInfoServiceImpl implements AddressInfoService {
         UserInfo user = (UserInfo) SecurityUtils.getSubject().getPrincipal();
         return addressInfoDao.getAddress(user.getUserName());
     }
+
+    @Override
+    public void deletedAddress(int id) {
+        addressInfoDao.deletedAddress(id);
+    }
 }

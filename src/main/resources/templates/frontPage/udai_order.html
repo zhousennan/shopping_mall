@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="/frontStatic/css/iconfont.css">
+    <link rel="stylesheet" href="/frontStatic/css/global.css">
+    <link rel="stylesheet" href="/frontStatic/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/swiper.min.css">
+    <link rel="stylesheet" href="/frontStatic/css/styles.css">
+    <script src="/frontStatic/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/bootstrap.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/swiper.min.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/global.js" charset="UTF-8"></script>
+    <script src="/frontStatic/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
+    <title>古风家</title>
+</head>
+<body>
+<!-- 顶部tab -->
+<div th:replace="frontPage/fragment2/head2"></div>
+
+<div class="content clearfix bgf5">
+    <section class="user-center inner clearfix">
+        <div th:replace="frontPage/fragment2/sidebar"></div>
+        <div class="pull-right">
+            <div class="user-content__box clearfix bgf">
+                <div class="title">订单中心-我的订单</div>
+                <div class="order-list__box bgf">
+                    <div class="order-panel">
+                        <ul class="nav user-nav__title" role="tablist">
+                            <li role="presentation" class="nav-item active"><a href="#all" aria-controls="all"
+                                                                               role="tab" data-toggle="tab">所有订单</a>
+                            </li>
+                            <li role="presentation" class="nav-item "><a href="#pay" aria-controls="pay" role="tab"
+                                                                         data-toggle="tab">待付款 </a></li>
+                            <li role="presentation" class="nav-item "><a href="#emit" aria-controls="emit" role="tab"
+                                                                         data-toggle="tab">待发货 </a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="all">
+                                <table id="orderall" class="table text-center">
+                                    <tr>
+                                        <th width="380">商品信息</th>
+                                        <th width="85">数量</th>
+                                        <th width="120">付款</th>
+
+
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="pay">
+                                <table id="getOrderInfoNoPay" class="table text-center">
+                                    <tr>
+                                        <th width="380">商品信息</th>
+                                        <th width="85">数量</th>
+                                        <th width="120">付款</th>
+                                        <th width="120">交易状态</th>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+
+
+                            <div role="tabpanel" class="tab-pane fade" id="emit">
+
+
+                                <table id="getOrderInfoNofh" class="table text-center">
+                                    <tr>
+                                        <th width="380">商品信息</th>
+                                        <th width="85">数量</th>
+                                        <th width="120">付款</th>
+                                        <th width="120">交易状态</th>
+
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    $(document).ready(function () {
+        getAllOrderInfo()
+        getOrderInfoNoPay()
+        getOrderInfoNofh()
+    });
+
+    function getAllOrderInfo() {
+        $.ajax({
+            url: "/api/getAllOrderInfo",
+            type: "get",
+            contentType: "application/json",
+            success: function (data) {
+                html = "";
+                for (var i = 0; i < data.length; i++) {
+
+                    html += "<tr  class=\"order-item\">  <td>\n" +
+                        "                                            <label>\n" +
+                        "                                                <a  class=\"num\">\n" +
+                        "                                                 时间：" + data[i].tradingTime + "订单号:" + data[i].orderId + "\n" +
+                        "                                                </a>\n" +
+                        "                                                <div class=\"card\">\n" +
+                        "                                                    <div class=\"img\"><img src=\"" + data[i].imageMain + "\" alt=\"\"\n" +
+                        "                                                                          class=\"cover\"></div>\n" +
+                        "                                                    <div class=\"name ep2\">" + data[i].productName + "</div>\n" +
+                        "                                                    <div class=\"format\">尺码：均码</div>\n" +
+                        "                                                </div>\n" +
+                        "                                            </label>\n" +
+                        "                                        </td>\n" +
+                        "                                        <td>" + data[i].orderNumber + "</td>\n" +
+                        "                                        <td>￥" + data[i].productTotalPrice + "<br><span class=\"fz12 c6 text-nowrap\"></span></td></tr>\n"
+
+                }
+                $("#orderall").append(html);
+
+            }, error: function () {
+                alert("出错了")
+            }
+
+
+        })
+
+    }
+
+    function getOrderInfoNoPay() {
+        $.ajax({
+            url: "/api/getOrderInfoNoPay",
+            type: "get",
+            contentType: "application/json",
+            success: function (data) {
+                html = "";
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].orderPaymentStatus == 0) {
+                        var s = "未支付"
+                    }
+                    if (data[i].orderPaymentStatus == 1) {
+                        var s = "已支付"
+                    }
+                    html += " <tr  class=\"order-item\">  <td>\n" +
+                        "                                            <label>\n" +
+                        "                                                <a  class=\"num\">\n" +
+                        "                                                 时间：" + data[i].tradingTime + "订单号:" + data[i].orderId + "\n" +
+                        "                                                </a>\n" +
+                        "                                                <div class=\"card\">\n" +
+                        "                                                    <div class=\"img\"><img src=\"" + data[i].imageMain + "\" alt=\"\"\n" +
+                        "                                                                          class=\"cover\"></div>\n" +
+                        "                                                    <div class=\"name ep2\">" + data[i].productName + "</div>\n" +
+                        "                                                    <div class=\"format\">尺码：均码</div>\n" +
+                        "                                                </div>\n" +
+                        "                                            </label>\n" +
+                        "                                        </td>\n" +
+                        "                                        <td>" + data[i].orderNumber + "</td>\n" +
+                        "                                        <td>￥" + data[i].productTotalPrice + "<br><span class=\"fz12 c6 text-nowrap\"></span></td> <td>" + s + "</td> </tr>\n"
+
+
+
+
+                }
+                $("#getOrderInfoNoPay").append(html);
+
+
+            }, error: function () {
+                alert("出错了")
+            }
+
+
+        })
+
+    }
+
+    function getOrderInfoNofh() {
+        $.ajax({
+            url: "/api/getOrderInfoNofh",
+            type: "get",
+            contentType: "application/json",
+            success: function (data) {
+                html = "";
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].orderDeliverGoodsStatus == 0) {
+                        var s = "未发货"
+                    }
+                    if (data[i].orderDeliverGoodsStatus == 1) {
+                        var s = "已发货"
+                    }
+                    html += "  <tr  class=\"order-item\">  <td>\n" +
+                        "                                            <label>\n" +
+                        "                                                <a  class=\"num\">\n" +
+                        "                                                 时间：" + data[i].tradingTime + "订单号:" + data[i].orderId + "\n" +
+                        "                                                </a>\n" +
+                        "                                                <div class=\"card\">\n" +
+                        "                                                    <div class=\"img\"><img src=\"" + data[i].imageMain + "\" alt=\"\"\n" +
+                        "                                                                          class=\"cover\"></div>\n" +
+                        "                                                    <div class=\"name ep2\">" + data[i].productName + "</div>\n" +
+                        "                                                    <div class=\"format\">尺码：均码</div>\n" +
+                        "                                                </div>\n" +
+                        "                                            </label>\n" +
+                        "                                        </td>\n" +
+                        "                                        <td>" + data[i].orderNumber + "</td>\n" +
+                        "                                        <td>￥" + data[i].productTotalPrice + "<br><span class=\"fz12 c6 text-nowrap\"></span></td> <td>" + s + "</td></tr>" +
+                        ""
+
+                }
+                $("#getOrderInfoNofh").append(html);
+
+
+            }, error: function () {
+                alert("出错了")
+            }
+
+
+        })
+
+    }
+
+
+</script>
+
+<!-- 底部信息 -->
+<div th:replace="frontPage/fragments/footer"></div>
+</body>
+</html>

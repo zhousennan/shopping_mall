@@ -53,5 +53,39 @@ public class FrontController {
         return "frontPage/item/addressEdit";
     }
 
+    @GetMapping(value = "toInfo")
+    public String goInfo() {
+        return "frontPage/udai_setting";
+    }
+
+    @GetMapping(value = "treasurer")
+    public String treasurer() {
+        return "frontPage/udai_treasurer";
+    }
+
+    @GetMapping(value = "traditional")
+    public String traditional() {
+        return "frontPage/udai_article10";
+    }
+
+    @GetMapping(value = "article")
+    public String article() {
+        return "frontPage/udai_article12";
+    }
+
+    @GetMapping(value = "refund")
+    public String refund() {
+        return "frontPage/udai_refund";
+    }
+
+    @GetMapping(value = "order")
+    public String order() {
+        return "frontPage/udai_order";
+    }
+    @GetMapping(value = "about")
+    public String about(){
+        return "frontPage/udai_about";
+    }
+
 
 }

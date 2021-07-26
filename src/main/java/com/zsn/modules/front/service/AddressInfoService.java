@@ -12,4 +12,6 @@ public interface AddressInfoService {
     Result<Object> insertAddress(AddressInfo addressInfo);
 
     List<AddressInfo> getAddress();
+
+    void  deletedAddress(int id);
 }

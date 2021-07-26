@@ -5,6 +5,7 @@ import com.zsn.modules.account.entity.OrderInfo;
 import com.zsn.modules.account.entity.Product;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -38,14 +39,14 @@ public interface OrderInfoDao {
 //    void insertOrder(OrderInfo orderInfo);
 
     @Delete("update order_info set deleted_status=0 where order_id = #{orderId}")
-    void deletedOrderInfo(int orderId);
+    void deletedOrderInfo(String orderId);
 
     @Update("update order_info set address=#{address},user_phone=#{userPhone},consignee=#{consignee},express_delivery_company=#{expressDeliveryCompany}" +
             " where order_id=#{orderId}")
     void updateProduct(OrderInfo orderInfo);
 
     @Select("select * from order_info where order_id=#{orderId}")
-    OrderInfo getOrderInfo(int orderId);
+    OrderInfo getOrderInfo(String orderId);
 
     @Update("update order_info set courier_number=#{courierNumber},order_deliver_goods_status=1 " +
             " where order_id=#{orderId} and order_deliver_goods_status=0")
@@ -138,5 +139,15 @@ public interface OrderInfoDao {
     //退款的钱
     @Select("select sum(product_total_price)  from order_info where refund_status=-1")
     Double getRefundMoney();
+
+    @Select("select *  from order_info where user_name=#{userName} ")
+    List<OrderInfo> getAllOrderInfo(String userName);
+
+    @Select("select *  from order_info where user_name=#{userName} and order_payment_status=0 ")
+    List<OrderInfo> getOrderInfoNoPay(String userName);
+
+    @Select("select *  from order_info where user_name=#{userName} and order_payment_status=1 and" +
+            " order_deliver_goods_status =0 ")
+    List<OrderInfo> getOrderInfoNofh(String userName);
 
 }

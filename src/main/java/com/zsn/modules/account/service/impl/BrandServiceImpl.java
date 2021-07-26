@@ -28,9 +28,9 @@ public class BrandServiceImpl implements BrandService {
     @Transactional
     public Result<Brand> insertOrder(Brand brand) {
         brandDao.insertOrder(brand);
-        return new Result<>(Result.ResultStatus.SUCCESS.status, "插入成功");
+        return new Result<>(Result.ResultStatus.SUCCESS.status, "新增成功");
     }
-    /*更加品牌id进行删除*/
+    /*根据品牌id进行删除*/
     @Override
     @Transactional
     public Result<Object> deletedBrand(int brandId) {

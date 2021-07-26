@@ -12,15 +12,20 @@ public interface OrderInfoService {
 
     PageInfo<OrderInfo> getOrderInfoList(SearchVo searchVo);
 
-    Result<Object> deletedOrderInfo(int orderId);
+    Result<Object> deletedOrderInfo(String orderId);
 
     Result<OrderInfo> updateProduct(OrderInfo orderInfo);
 
-    OrderInfo getOrderInfo(int orderId);
+    OrderInfo getOrderInfo(String orderId);
 
     Result<OrderInfo> saveCourierNumber(OrderInfo orderInfo);
 
     List<List<String>> getTransaionData();
 
     List<Object> getInfoData();
+    List<OrderInfo> getAllOrderInfo();
+
+    List<OrderInfo> getOrderInfoNoPay();
+
+    List<OrderInfo> getOrderInfoNofh();
 }

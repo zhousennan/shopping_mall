@@ -1,0 +1,22 @@
+<!-- 顶部tab -->
+<div class="tab-header">
+    <div class="inner">
+
+        <div class="pull-right">
+            <a shiro:notAuthenticated="" href="/front/toFrontLogin"><span class="cr">登录</span></a>
+            <a shiro:notAuthenticated="" href="/front/toFrontLogin?p=register">注册</a>
+            <a shiro:Authenticated="user" href="/front/toInfo">个人中心</a>
+            <a shiro:Authenticated="user" href="/front/toFrontLogin">退出</a>
+            <a shiro:Authenticated="user" href="/front/order">我的订单</a>
+        </div>
+    </div>
+</div>
+
+<div class="bgf5 clearfix">
+    <div class="top-user">
+        <div class="inner">
+            <a class="logo" href="/front/index"><img src="/frontStatic/images/icons/logo.jpg" alt="古风家" class="cover"></a>
+            <div class="title">个人中心</div>
+        </div>
+    </div>
+</div>

@@ -31,8 +31,8 @@ public class OrderInfoController {
     /*
      * 127.0.0.1:8080/api/OrderInfo/1  deleted
      * */
-    @DeleteMapping(value = "OrderInfo/{orderId}")
-    public Result<Object> deletedOrderInfo(@PathVariable int orderId) {
+    @DeleteMapping(value = "deletedOrderInfoById/{orderId}")
+    public Result<Object> deletedOrderInfo(@PathVariable String orderId) {
         return orderInfoService.deletedOrderInfo(orderId);
     }
 
@@ -52,8 +52,8 @@ public class OrderInfoController {
     /*
      * 127.0.0.1:8080/api/orderInfo/1  get
      * */
-    @GetMapping(value = "orderInfo/{orderId}")
-    public OrderInfo getOrderInfo(@PathVariable int orderId) {
+    @GetMapping(value = "orderInfoById/{orderId}")
+    public OrderInfo getOrderInfo(@PathVariable String orderId) {
         return orderInfoService.getOrderInfo(orderId);
     }
 

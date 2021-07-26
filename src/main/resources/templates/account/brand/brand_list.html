@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -46,8 +46,8 @@
     </div>
 </div>
 
-<div th:replace="/account/brand/brandEdit"></div>
-<div th:replace="/account/brand/inserBrandEdit"></div>
+<div th:replace="account/brand/brandEdit"></div>
+<div th:replace="account/brand/inserBrandEdit"></div>
 </body>
 </html>
 <script type="text/javascript">
@@ -148,7 +148,7 @@
                 {data: 'brandId', name: "brand_id", sortable: true},
                 {data: 'brandName', name: "brand_name", sortable: true},
                 {data: 'brandDescription', name: "brand_description", sortable: true},
-                {data: 'operate', width: '80px', sortable: false}
+                {data: 'operate', width: '120px', sortable: false}
             ]
         });
     }

@@ -81,7 +81,7 @@ public class ShiroConfig {
         map.put("/js/**", "anon");
         map.put("/mystyle/**", "anon");
         map.put("/plugin/**", "anon");
-        map.put("/frontStatic/**", "anon");
+        map.put("/fro衣服ntStatic/**", "anon");
 
         map.put("/account/**", "authc");
         map.put("/account/login", "anon");

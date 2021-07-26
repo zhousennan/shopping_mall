@@ -19,8 +19,8 @@
 	display: none;
 	padding: 25px 20px;
 	position: absolute;
-	right: 100px;top: 20px;
-	background-color: #fff;
+	right: 135px;top:43px;
+	background-color:  rgba(255,255,255,0.6);
 	border-radius: 5px;
 	-webkit-box-shadow: 0 15px 35px -25px #b31e22;
 	   -moz-box-shadow: 0 15px 35px -25px #b31e22;
